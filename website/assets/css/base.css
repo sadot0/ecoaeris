@@ -1,0 +1,229 @@
+/* ============================================================
+   EcoAeris — BASE styles
+   Переменные, reset, базовая типографика.
+   Этот файл НЕ МЕНЯЕМ без согласования с тимлидом!
+   ============================================================ */
+
+/* --- CSS-переменные: палитра и размеры --- */
+:root {
+  /* Основная палитра бренда */
+  --color-primary: #0EA5E9;        /* Небесно-голубой — акцент "воздух" */
+  --color-primary-dark: #0284C7;   /* Тёмный голубой для hover */
+  --color-secondary: #10B981;      /* Изумрудный — эко, clean */
+  --color-secondary-dark: #059669;
+  --color-accent: #14B8A6;         /* Бирюзовый */
+  --color-warm: #FEF7ED;           /* Тёплый кремовый — фон секций */
+  --color-danger: #EF4444;
+
+  /* Нейтральные */
+  --color-dark: #0F172A;           /* Slate 900 — тёмный текст */
+  --color-text: #1E293B;           /* Основной текст */
+  --color-muted: #64748B;          /* Серый второстепенный */
+  --color-border: #E2E8F0;         /* Границы */
+  --color-bg: #F8FAFC;             /* Фон страницы */
+  --color-bg-alt: #F1F5F9;         /* Альтернативный фон */
+  --color-white: #FFFFFF;
+
+  /* AQI-цвета по US EPA (используем в карте и графиках) */
+  --aqi-good: #00E400;
+  --aqi-moderate: #FFFF00;
+  --aqi-usg: #FF7E00;
+  --aqi-unhealthy: #FF0000;
+  --aqi-very-unhealthy: #8F3F97;
+  --aqi-hazardous: #7E0023;
+
+  /* Типографика */
+  --font-heading: 'Manrope', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  /* Размеры */
+  --container-max: 1200px;
+  --header-h: 72px;
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Тени */
+  --shadow-xs: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 48px rgba(15, 23, 42, 0.12);
+  --shadow-xl: 0 32px 64px rgba(15, 23, 42, 0.16);
+  --shadow-primary: 0 8px 24px rgba(14, 165, 233, 0.25);
+
+  /* Переходы */
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s ease;
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Тёмная тема (активируется атрибутом data-theme="dark" на <html>) --- */
+[data-theme="dark"] {
+  --color-text: #F1F5F9;
+  --color-dark: #F8FAFC;
+  --color-bg: #0F172A;
+  --color-bg-alt: #1E293B;
+  --color-white: #1E293B;
+  --color-muted: #94A3B8;
+  --color-border: #334155;
+  --color-warm: #1E293B;
+}
+
+/* --- Reset: обнуляем отступы и рамки --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+main {
+  min-height: calc(100vh - var(--header-h));
+}
+
+/* --- Типографика --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-dark);
+  letter-spacing: -0.02em;
+  text-rendering: optimizeLegibility;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+
+p { margin-bottom: 0; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+/* --- Утилиты --- */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.section--warm { background: var(--color-warm); }
+
+/* Section header/kicker (shared across pages) */
+.section__header {
+  text-align: center;
+  margin-bottom: 56px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section__kicker {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(14, 165, 233, 0.08);
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.section__subtitle {
+  color: var(--color-muted);
+  margin-top: 16px;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+/* --- Скрытие для скринридеров --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* --- Анимации появления --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Выделение текста --- */
+::selection {
+  background: rgba(14, 165, 233, 0.2);
+  color: var(--color-dark);
+}
+
+/* --- Скроллбар --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+
+/* --- Адаптив --- */
+@media (max-width: 768px) {
+  .section { padding: 60px 0; }
+  .container { padding: 0 16px; }
+  .section__header { margin-bottom: 40px; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 48px 0; }
+  html { font-size: 15px; }
+}

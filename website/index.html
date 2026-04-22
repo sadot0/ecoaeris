@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoAeris — Качество воздуха Узбекистана в реальном времени</title>
+  <meta name="description" content="Мониторинг AQI по городам Узбекистана и подбор очистителей воздуха">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Общие стили (единый дизайн команды) -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <!-- Leaflet для карты -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Стили именно этой страницы -->
+  <link rel="stylesheet" href="assets/css/home.css">
+
+  <!-- Telegram Web App SDK (для интеграции с ботом) -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+  <!-- ============== HEADER (одинаковый у всей команды!) ============== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.svg" alt="EcoAeris" class="logo__icon" width="36" height="36">
+        <span>EcoAeris</span>
+      </a>
+      <button class="nav-toggle" aria-label="Меню">☰</button>
+      <nav class="nav">
+        <a href="index.html" class="nav__link active">Главная</a>
+        <a href="shop.html" class="nav__link">Магазин</a>
+        <a href="calculator.html" class="nav__link">Калькулятор</a>
+        <a href="pricing.html" class="nav__link">Аренда</a>
+        <a href="about.html" class="nav__link">О нас</a>
+        <a href="contact.html" class="nav__link">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============== HERO ============== -->
+    <!--
+      Hero-секция. Семантический <section>, слева заголовок и CTA,
+      справа живой виджет AQI Ташкента. Используем CSS Grid.
+    -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="section__kicker">Уровень воздуха: Узбекистан</span>
+          <h1>Дышите <span class="hero__accent">чистым воздухом</span> осознанно</h1>
+          <p class="hero__subtitle">
+            Мониторинг качества воздуха по всем городам Узбекистана в реальном времени.
+            Подбор очистителей для дома, офиса, завода. Аренда и продажа.
+          </p>
+          <div class="hero__cta">
+            <a href="calculator.html" class="btn btn--primary btn--large">Подобрать очиститель</a>
+            <a href="#map" class="btn btn--secondary btn--large">Открыть карту</a>
+          </div>
+        </div>
+
+        <!-- Live-виджет AQI Ташкента (данные подгружаются через JS) -->
+        <aside class="aqi-widget" id="hero-aqi-widget">
+          <div class="aqi-widget__skeleton">
+            <div class="skeleton-circle"></div>
+            <p>Загружаем данные AQI…</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============== MAP ============== -->
+    <section class="section" id="map">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__kicker">Живая карта</span>
+          <h2>Качество воздуха по городам Узбекистана</h2>
+          <p class="section__subtitle">
+            Данные обновляются каждые 10 минут из 500+ мировых станций мониторинга
+          </p>
+        </header>
+
+        <!-- Контейнер для Leaflet-карты -->
+        <div id="leaflet-map" role="application" aria-label="Интерактивная карта AQI Узбекистана"></div>
+
+        <!-- Легенда со шкалой US EPA -->
+        <aside class="map-legend">
+          <span class="aqi-badge aqi-badge--good">0–50 Хороший</span>
+          <span class="aqi-badge aqi-badge--moderate">51–100 Умеренный</span>
+          <span class="aqi-badge aqi-badge--usg">101–150 Уязвимым</span>
+          <span class="aqi-badge aqi-badge--unhealthy">151–200 Вредный</span>
+          <span class="aqi-badge aqi-badge--very-unhealthy">201–300 Очень вредный</span>
+          <span class="aqi-badge aqi-badge--hazardous">301+ Опасный</span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============== WHY IT MATTERS ============== -->
+    <section class="section section--warm">
+      <div class="container">
+        <header class="section__header">
+          <h2>Почему это важно именно сейчас</h2>
+        </header>
+        <div class="stats-grid">
+          <article class="card stat-card">
+            <div class="stat-card__number">19</div>
+            <h3>Место в мире</h3>
+            <p>Ташкент — 19-я столица по загрязнению (IQAir, 2024)</p>
+          </article>
+          <article class="card stat-card">
+            <div class="stat-card__number">6.3×</div>
+            <h3>Выше нормы ВОЗ</h3>
+            <p>PM2.5 в Ташкенте = 31.4 µg/m³ при норме 5 µg/m³</p>
+          </article>
+          <article class="card stat-card">
+            <div class="stat-card__number">3 042</div>
+            <h3>Смерти в год</h3>
+            <p>Преждевременные смерти от PM2.5 в Ташкенте (World Bank)</p>
+          </article>
+          <article class="card stat-card">
+            <div class="stat-card__number">×9</div>
+            <h3>Рост импорта</h3>
+            <p>Импорт очистителей вырос в 9 раз за 2022–2025 (Spot.uz)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== HOW IT WORKS ============== -->
+    <section class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2>Как это работает</h2>
+        </header>
+        <div class="steps">
+          <article class="card step">
+            <div class="step__num">1</div>
+            <h3>Проверяете AQI</h3>
+            <p>Открываете карту — видите воздух вашего района в реальном времени</p>
+          </article>
+          <article class="card step">
+            <div class="step__num">2</div>
+            <h3>Получаете рекомендацию</h3>
+            <p>Калькулятор подбирает модель очистителя под площадь и бюджет</p>
+          </article>
+          <article class="card step">
+            <div class="step__num">3</div>
+            <h3>Покупаете или арендуете</h3>
+            <p>Доставим и установим за 24 часа. Аренда от 180 000 сум/мес</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============== FOOTER (одинаковый у всей команды!) ============== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">EcoAeris</h3>
+          <p>Мониторинг воздуха и очистители для Узбекистана.</p>
+          <a href="https://t.me/EcoAerisBot" target="_blank" rel="noopener" class="footer__tg-btn">
+            📱 Открыть Telegram-бота
+          </a>
+        </div>
+        <div>
+          <h4 class="footer__title">Продукт</h4>
+          <p><a href="shop.html">Магазин</a></p>
+          <p><a href="calculator.html">Калькулятор</a></p>
+          <p><a href="pricing.html">Аренда</a></p>
+        </div>
+        <div>
+          <h4 class="footer__title">Компания</h4>
+          <p><a href="about.html">О нас</a></p>
+          <p><a href="contact.html">Контакты</a></p>
+        </div>
+        <div>
+          <h4 class="footer__title">Данные</h4>
+          <p>Источник: WAQI.info</p>
+          <p>Обновление каждые 10 мин</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © <span id="footer-year">2026</span> EcoAeris. Студенческий проект TEA3DBA2A.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Общие JS -->
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- JS этой страницы -->
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

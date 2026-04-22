@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="p28-body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d0d0d0"/>
+      <stop offset="20%" stop-color="#eee"/>
+      <stop offset="50%" stop-color="#f5f5f5"/>
+      <stop offset="80%" stop-color="#eee"/>
+      <stop offset="100%" stop-color="#bbb"/>
+    </linearGradient>
+    <linearGradient id="p28-dark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="30%" stop-color="#3a3a3a"/>
+      <stop offset="70%" stop-color="#3a3a3a"/>
+      <stop offset="100%" stop-color="#222"/>
+    </linearGradient>
+    <linearGradient id="p28-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E90FF"/>
+      <stop offset="100%" stop-color="#0B5ED7"/>
+    </linearGradient>
+    <filter id="p28-drop">
+      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#00000025"/>
+    </filter>
+    <pattern id="p28-dots" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.2" fill="#00000015"/>
+    </pattern>
+    <pattern id="p28-vents" width="130" height="6" patternUnits="userSpaceOnUse">
+      <rect width="130" height="2" rx="1" fill="#333"/>
+    </pattern>
+  </defs>
+  <!-- Base shadow -->
+  <ellipse cx="200" cy="348" rx="85" ry="10" fill="#00000015"/>
+  <!-- Main body -->
+  <rect x="118" y="55" width="164" height="290" rx="20" fill="url(#p28-body)" filter="url(#p28-drop)"/>
+  <!-- Dark front panel -->
+  <rect x="130" y="70" width="140" height="200" rx="14" fill="url(#p28-dark)"/>
+  <!-- Circular display -->
+  <circle cx="200" cy="130" r="35" fill="#111" stroke="#444" stroke-width="1"/>
+  <circle cx="200" cy="130" r="30" fill="#0a0a0a"/>
+  <text x="200" y="128" text-anchor="middle" fill="#0B5ED7" font-family="'Courier New',monospace" font-size="22" font-weight="bold">18</text>
+  <text x="200" y="144" text-anchor="middle" fill="#666" font-family="Arial,sans-serif" font-size="8">PM2.5</text>
+  <!-- Color ring -->
+  <circle cx="200" cy="130" r="33" fill="none" stroke="url(#p28-blue)" stroke-width="2.5" opacity="0.8"/>
+  <!-- AQ bar indicators -->
+  <rect x="172" y="172" width="10" height="4" rx="2" fill="#4CAF50" opacity="0.9"/>
+  <rect x="185" y="172" width="10" height="4" rx="2" fill="#8BC34A" opacity="0.9"/>
+  <rect x="198" y="172" width="10" height="4" rx="2" fill="#FFEB3B" opacity="0.4"/>
+  <rect x="211" y="172" width="10" height="4" rx="2" fill="#FF5722" opacity="0.2"/>
+  <!-- Touch controls -->
+  <circle cx="165" cy="195" r="6" fill="none" stroke="#555" stroke-width="1"/>
+  <circle cx="185" cy="195" r="6" fill="none" stroke="#555" stroke-width="1"/>
+  <circle cx="200" cy="210" r="8" fill="#0B5ED7" opacity="0.5"/>
+  <circle cx="215" cy="195" r="6" fill="none" stroke="#555" stroke-width="1"/>
+  <circle cx="235" cy="195" r="6" fill="none" stroke="#555" stroke-width="1"/>
+  <!-- Dot pattern intake -->
+  <rect x="130" y="230" width="140" height="40" fill="url(#p28-dots)"/>
+  <!-- Mesh vent area via pattern -->
+  <rect x="135" y="278" width="130" height="56" fill="url(#p28-vents)" opacity="0.1"/>
+  <!-- Blue accent strip -->
+  <rect x="118" y="340" width="164" height="5" rx="2" fill="#0B5ED7" opacity="0.7"/>
+  <!-- Brand text -->
+  <text x="200" y="366" text-anchor="middle" fill="#555" font-family="'Helvetica Neue',Arial,sans-serif" font-size="10" font-weight="500" letter-spacing="3">PHILIPS</text>
+  <text x="200" y="382" text-anchor="middle" fill="#0B5ED7" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="1">AC2887/10 Series 2000</text>
+</svg>

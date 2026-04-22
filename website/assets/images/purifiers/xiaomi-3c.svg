@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="x3c-body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="30%" stop-color="#fff"/>
+      <stop offset="70%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#d4d4d4"/>
+    </linearGradient>
+    <filter id="x3c-drop" x="-5%" y="-2%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#00000025"/>
+    </filter>
+    <pattern id="x3c-outlet" width="150" height="5" patternUnits="userSpaceOnUse">
+      <rect width="150" height="1.5" fill="#333"/>
+    </pattern>
+    <pattern id="x3c-intake" width="150" height="6" patternUnits="userSpaceOnUse">
+      <rect width="150" height="1" fill="#333"/>
+    </pattern>
+    <clipPath id="x3c-clip">
+      <rect x="130" y="155" width="140" height="160" rx="4"/>
+    </clipPath>
+  </defs>
+  <!-- Base shadow -->
+  <ellipse cx="200" cy="345" rx="80" ry="10" fill="#00000015"/>
+  <!-- Main body -->
+  <rect x="130" y="60" width="140" height="280" rx="16" fill="url(#x3c-body)" filter="url(#x3c-drop)"/>
+  <!-- Top panel -->
+  <rect x="130" y="60" width="140" height="40" rx="16" fill="#f0f0f0"/>
+  <rect x="130" y="80" width="140" height="20" fill="#f0f0f0"/>
+  <!-- Top outlet grille via pattern -->
+  <rect x="150" y="67" width="100" height="28" fill="url(#x3c-outlet)" opacity="0.15"/>
+  <!-- OLED display -->
+  <rect x="170" y="110" width="60" height="30" rx="4" fill="#1a1a1a"/>
+  <text x="200" y="130" text-anchor="middle" fill="#FF6700" font-family="Arial,sans-serif" font-size="11" font-weight="bold">35</text>
+  <text x="222" y="125" text-anchor="middle" fill="#888" font-family="Arial,sans-serif" font-size="7">AQI</text>
+  <!-- Air intake vents via pattern -->
+  <g clip-path="url(#x3c-clip)" opacity="0.08">
+    <rect x="125" y="155" width="150" height="160" fill="url(#x3c-intake)"/>
+  </g>
+  <!-- Power button -->
+  <circle cx="200" cy="305" r="12" fill="none" stroke="#FF6700" stroke-width="2.5" opacity="0.9"/>
+  <path d="M200 296 L200 305" stroke="#FF6700" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Bottom accent -->
+  <rect x="130" y="330" width="140" height="10" rx="5" fill="#FF6700" opacity="0.85"/>
+  <!-- Brand text -->
+  <text x="200" y="370" text-anchor="middle" fill="#555" font-family="'Helvetica Neue',Arial,sans-serif" font-size="10" font-weight="500" letter-spacing="3">XIAOMI</text>
+  <text x="200" y="386" text-anchor="middle" fill="#FF6700" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="1">Smart Air Purifier 3C</text>
+</svg>

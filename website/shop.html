@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoAeris — Магазин очистителей воздуха</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+
+  <!-- Одинаковый HEADER -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="logo"><img src="assets/images/logo.svg" alt="EcoAeris" class="logo__icon" width="36" height="36"><span>EcoAeris</span></a>
+      <button class="nav-toggle" aria-label="Меню">☰</button>
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Главная</a>
+        <a href="shop.html" class="nav__link active">Магазин</a>
+        <a href="calculator.html" class="nav__link">Калькулятор</a>
+        <a href="pricing.html" class="nav__link">Аренда</a>
+        <a href="about.html" class="nav__link">О нас</a>
+        <a href="contact.html" class="nav__link">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="shop-hero">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__kicker">Каталог</span>
+          <h1>Очистители воздуха</h1>
+          <p class="section__subtitle" id="shop-counter">Загружаем каталог...</p>
+        </header>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container shop-layout">
+
+        <!-- Сайдбар с фильтрами -->
+        <aside class="filters">
+          <h3>Фильтры</h3>
+
+          <div class="filter-group">
+            <h4>Бренд</h4>
+            <label><input type="checkbox" class="filter" data-filter="brand" value="Xiaomi"> Xiaomi</label>
+            <label><input type="checkbox" class="filter" data-filter="brand" value="Philips"> Philips</label>
+            <label><input type="checkbox" class="filter" data-filter="brand" value="Dyson"> Dyson</label>
+            <label><input type="checkbox" class="filter" data-filter="brand" value="IQAir"> IQAir</label>
+          </div>
+
+          <div class="filter-group">
+            <h4>Цена (сум)</h4>
+            <label><input type="radio" name="price" class="filter" data-filter="price" value="0-3000000"> До 3 млн</label>
+            <label><input type="radio" name="price" class="filter" data-filter="price" value="3000000-6000000"> 3–6 млн</label>
+            <label><input type="radio" name="price" class="filter" data-filter="price" value="6000000-999999999"> От 6 млн</label>
+            <label><input type="radio" name="price" class="filter" data-filter="price" value="" checked> Все</label>
+          </div>
+
+          <div class="filter-group">
+            <h4>Площадь покрытия</h4>
+            <label><input type="checkbox" class="filter" data-filter="coverage" value="small"> До 40 м²</label>
+            <label><input type="checkbox" class="filter" data-filter="coverage" value="medium"> 40–80 м²</label>
+            <label><input type="checkbox" class="filter" data-filter="coverage" value="large"> 80+ м²</label>
+          </div>
+
+          <div class="filter-group">
+            <label><input type="checkbox" class="filter" data-filter="available" value="true"> Только в наличии</label>
+          </div>
+
+          <button class="btn btn--secondary" id="reset-filters">Сбросить</button>
+        </aside>
+
+        <!-- Основной контент: сортировка + товары -->
+        <div class="shop-main">
+          <div class="shop-toolbar">
+            <div>Найдено: <b id="result-count">0</b></div>
+            <select id="sort-select">
+              <option value="price-asc">Цена: по возрастанию</option>
+              <option value="price-desc">Цена: по убыванию</option>
+              <option value="coverage-desc">Площадь: больше</option>
+            </select>
+          </div>
+
+          <div class="products-grid" id="products-grid">
+            <!-- Карточки товаров генерирует JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Плавающая корзина (sticky) -->
+    <aside class="cart" id="cart">
+      <header class="cart__header">
+        <h3>🛒 Корзина</h3>
+        <button class="cart__close" id="cart-close" aria-label="Закрыть">×</button>
+      </header>
+      <div class="cart__body" id="cart-body">
+        <p class="cart__empty">Корзина пуста</p>
+      </div>
+      <footer class="cart__footer">
+        <div class="cart__total">Итого: <b><span id="cart-total">0</span> сум</b></div>
+        <a href="https://t.me/EcoAerisBot?start=cart" class="btn btn--primary" id="cart-checkout" target="_blank">
+          Оформить через Telegram
+        </a>
+      </footer>
+    </aside>
+
+    <button class="cart-toggle" id="cart-toggle" aria-label="Открыть корзину">
+      🛒 <span class="cart-toggle__badge" id="cart-badge">0</span>
+    </button>
+  </main>
+
+  <!-- Одинаковый FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">EcoAeris</h3>
+          <p>Мониторинг воздуха и очистители для Узбекистана.</p>
+          <a href="https://t.me/EcoAerisBot" target="_blank" class="footer__tg-btn">📱 Telegram-бот</a>
+        </div>
+        <div><h4 class="footer__title">Продукт</h4><p><a href="shop.html">Магазин</a></p><p><a href="calculator.html">Калькулятор</a></p><p><a href="pricing.html">Аренда</a></p></div>
+        <div><h4 class="footer__title">Компания</h4><p><a href="about.html">О нас</a></p><p><a href="contact.html">Контакты</a></p></div>
+        <div><h4 class="footer__title">Данные</h4><p>WAQI.info</p></div>
+      </div>
+      <div class="footer__bottom">© <span id="footer-year">2026</span> EcoAeris</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/shop.js"></script>
+</body>
+</html>

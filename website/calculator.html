@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoAeris — Калькулятор подбора очистителя</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/calculator.css">
+</head>
+<body>
+
+  <!-- Одинаковый HEADER (копия) -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="logo"><img src="assets/images/logo.svg" alt="EcoAeris" class="logo__icon" width="36" height="36"><span>EcoAeris</span></a>
+      <button class="nav-toggle" aria-label="Меню">☰</button>
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Главная</a>
+        <a href="shop.html" class="nav__link">Магазин</a>
+        <a href="calculator.html" class="nav__link active">Калькулятор</a>
+        <a href="pricing.html" class="nav__link">Аренда</a>
+        <a href="about.html" class="nav__link">О нас</a>
+        <a href="contact.html" class="nav__link">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section calc-hero">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__kicker">Калькулятор</span>
+          <h1>Подберите очиститель <br>за 2 минуты</h1>
+          <p class="section__subtitle">Ответьте на 4 вопроса — получите персональную рекомендацию</p>
+        </header>
+
+        <!-- Progress bar (заполняется через JS) -->
+        <div class="progress">
+          <div class="progress__bar" id="progress-bar" style="width: 25%"></div>
+          <span class="progress__label" id="progress-label">Шаг 1 из 4</span>
+        </div>
+
+        <!-- ============ WIZARD ============ -->
+        <article class="wizard" id="wizard">
+
+          <!-- ШАГ 1 -->
+          <section class="wizard__step active" data-step="1">
+            <h2>Где будет работать очиститель?</h2>
+            <div class="options">
+              <button class="option-card" data-value="apartment">
+                <span class="option-card__icon">🏢</span>
+                <span class="option-card__title">Квартира</span>
+              </button>
+              <button class="option-card" data-value="house">
+                <span class="option-card__icon">🏡</span>
+                <span class="option-card__title">Частный дом</span>
+              </button>
+              <button class="option-card" data-value="office">
+                <span class="option-card__icon">💼</span>
+                <span class="option-card__title">Офис</span>
+              </button>
+              <button class="option-card" data-value="industrial">
+                <span class="option-card__icon">🏭</span>
+                <span class="option-card__title">Производство</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- ШАГ 2 -->
+          <section class="wizard__step" data-step="2">
+            <h2>Какая площадь помещения?</h2>
+            <div class="slider-wrap">
+              <input type="range" id="area-slider" min="20" max="500" step="5" value="60">
+              <div class="slider-value"><span id="area-value">60</span> м²</div>
+            </div>
+            <div class="wizard__nav">
+              <button class="btn btn--secondary" data-action="back">Назад</button>
+              <button class="btn btn--primary" data-action="next">Далее</button>
+            </div>
+          </section>
+
+          <!-- ШАГ 3 -->
+          <section class="wizard__step" data-step="3">
+            <h2>Есть особые требования?</h2>
+            <div class="options">
+              <button class="option-card" data-value="allergy">
+                <span class="option-card__icon">🤧</span>
+                <span class="option-card__title">Аллергия / астма</span>
+              </button>
+              <button class="option-card" data-value="kids">
+                <span class="option-card__icon">👶</span>
+                <span class="option-card__title">Дети в доме</span>
+              </button>
+              <button class="option-card" data-value="smoke">
+                <span class="option-card__icon">🚬</span>
+                <span class="option-card__title">Курят рядом</span>
+              </button>
+              <button class="option-card" data-value="none">
+                <span class="option-card__icon">✅</span>
+                <span class="option-card__title">Ничего особенного</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- ШАГ 4 -->
+          <section class="wizard__step" data-step="4">
+            <h2>Какой бюджет?</h2>
+            <div class="options">
+              <button class="option-card" data-value="low">
+                <span class="option-card__icon">💰</span>
+                <span class="option-card__title">До 3 млн сум</span>
+              </button>
+              <button class="option-card" data-value="mid">
+                <span class="option-card__icon">💰💰</span>
+                <span class="option-card__title">3–6 млн сум</span>
+              </button>
+              <button class="option-card" data-value="high">
+                <span class="option-card__icon">💰💰💰</span>
+                <span class="option-card__title">Более 6 млн</span>
+              </button>
+              <button class="option-card" data-value="rent">
+                <span class="option-card__icon">📅</span>
+                <span class="option-card__title">Рассмотрю аренду</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- РЕЗУЛЬТАТ -->
+          <section class="wizard__step wizard__result" data-step="5">
+            <div class="result-hero">
+              <span class="result-hero__kicker">Ваша рекомендация</span>
+              <h2 id="result-title">Xiaomi Mi Smart Air Purifier 4 Pro</h2>
+              <p id="result-subtitle">Лучший выбор для квартиры 60 м²</p>
+            </div>
+            <div class="result-main" id="result-main"></div>
+            <div class="wizard__nav">
+              <button class="btn btn--secondary" data-action="restart">Пройти заново</button>
+              <a href="https://t.me/EcoAerisBot?start=order" class="btn btn--primary" target="_blank">
+                📱 Заказать через Telegram
+              </a>
+            </div>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Одинаковый FOOTER (копия — ссылка на бот обязательна!) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">EcoAeris</h3>
+          <p>Мониторинг воздуха и очистители для Узбекистана.</p>
+          <a href="https://t.me/EcoAerisBot" target="_blank" rel="noopener" class="footer__tg-btn">📱 Открыть Telegram-бота</a>
+        </div>
+        <div><h4 class="footer__title">Продукт</h4><p><a href="shop.html">Магазин</a></p><p><a href="calculator.html">Калькулятор</a></p><p><a href="pricing.html">Аренда</a></p></div>
+        <div><h4 class="footer__title">Компания</h4><p><a href="about.html">О нас</a></p><p><a href="contact.html">Контакты</a></p></div>
+        <div><h4 class="footer__title">Данные</h4><p>Источник: WAQI.info</p></div>
+      </div>
+      <div class="footer__bottom">© <span id="footer-year">2026</span> EcoAeris</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/calculator.js"></script>
+</body>
+</html>

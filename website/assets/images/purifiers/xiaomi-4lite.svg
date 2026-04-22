@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="x4l-body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e0e0e0"/>
+      <stop offset="25%" stop-color="#f5f5f5"/>
+      <stop offset="75%" stop-color="#f5f5f5"/>
+      <stop offset="100%" stop-color="#ccc"/>
+    </linearGradient>
+    <linearGradient id="x4l-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#eee"/>
+    </linearGradient>
+    <filter id="x4l-drop">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#00000020"/>
+    </filter>
+    <pattern id="x4l-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.5" fill="#00000012"/>
+    </pattern>
+    <pattern id="x4l-slots" width="120" height="6" patternUnits="userSpaceOnUse">
+      <rect width="120" height="2" rx="1" fill="#333"/>
+    </pattern>
+  </defs>
+  <!-- Base shadow -->
+  <ellipse cx="200" cy="348" rx="70" ry="8" fill="#00000012"/>
+  <!-- Main body -->
+  <rect x="140" y="50" width="120" height="295" rx="20" fill="url(#x4l-body)" filter="url(#x4l-drop)"/>
+  <!-- Top section -->
+  <rect x="140" y="50" width="120" height="55" rx="20" fill="url(#x4l-top)"/>
+  <rect x="140" y="85" width="120" height="20" fill="url(#x4l-top)"/>
+  <!-- Top air outlet slots via pattern -->
+  <rect x="157" y="56" width="86" height="42" fill="url(#x4l-slots)" opacity="0.12"/>
+  <!-- Sensor LED -->
+  <circle cx="200" cy="115" r="4" fill="#FF6700" opacity="0.9"/>
+  <circle cx="200" cy="115" r="7" fill="#FF6700" opacity="0.15"/>
+  <!-- OLED display -->
+  <rect x="176" y="128" width="48" height="22" rx="3" fill="#111"/>
+  <text x="200" y="143" text-anchor="middle" fill="#4CAF50" font-family="monospace" font-size="10" font-weight="bold">28</text>
+  <!-- Dot matrix air intake -->
+  <rect x="148" y="165" width="104" height="150" rx="8" fill="url(#x4l-grid)"/>
+  <!-- Side accent grooves -->
+  <rect x="140" y="165" width="3" height="150" fill="#FF6700" opacity="0.5" rx="1"/>
+  <rect x="257" y="165" width="3" height="150" fill="#FF6700" opacity="0.5" rx="1"/>
+  <!-- Power button -->
+  <circle cx="200" cy="325" r="8" fill="none" stroke="#999" stroke-width="1.5"/>
+  <path d="M200 319 L200 325" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Bottom accent -->
+  <rect x="140" y="338" width="120" height="7" rx="3" fill="#FF6700" opacity="0.75"/>
+  <!-- Brand text -->
+  <text x="200" y="370" text-anchor="middle" fill="#555" font-family="'Helvetica Neue',Arial,sans-serif" font-size="10" font-weight="500" letter-spacing="3">XIAOMI</text>
+  <text x="200" y="386" text-anchor="middle" fill="#FF6700" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="1">Smart Air Purifier 4 Lite</text>
+</svg>

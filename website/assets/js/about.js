@@ -1,0 +1,93 @@
+/**
+ * EcoAeris — About Page JS
+ * Автор: Эмран
+ *
+ * Уникальная JS-функция: переключатель ЯЗЫКОВ (RU / UZ / EN)
+ * через data-i18n атрибуты, а также переключатель ТЕМЫ (светлая/тёмная)
+ * с сохранением в LocalStorage.
+ */
+
+(function () {
+  'use strict';
+
+  let translations = null;  // загрузится из i18n.json
+  const LANG_KEY = 'ecoaeris_lang';
+  const THEME_KEY = 'ecoaeris_theme';
+
+  /* ============================================================
+     БЛОК 1. Загрузка переводов
+     ============================================================ */
+  async function loadTranslations() {
+    try {
+      const resp = await fetch('assets/data/i18n.json');
+      translations = await resp.json();
+    } catch (err) {
+      console.error('Не удалось загрузить i18n.json:', err);
+      translations = { ru: {}, uz: {}, en: {} };
+    }
+  }
+
+  /* ============================================================
+     БЛОК 2. Применить язык ко всем элементам с data-i18n
+     ============================================================ */
+  function applyLanguage(lang) {
+    if (!translations || !translations[lang]) return;
+
+    document.documentElement.setAttribute('lang', lang);
+    localStorage.setItem(LANG_KEY, lang);
+
+    // Обновляем текст всех элементов с data-i18n="ключ"
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.dataset.i18n;
+      const value = translations[lang][key];
+      if (value) {
+        el.textContent = value;
+      }
+    });
+
+    // Подсвечиваем активную кнопку
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
+  /* ============================================================
+     БЛОК 3. Переключатель темы
+     Работает через атрибут [data-theme] на <html>.
+     CSS-переменные в base.css переопределяются для dark-темы.
+     ============================================================ */
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
+
+    const icon = document.querySelector('.theme-toggle__icon');
+    if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'light' ? 'dark' : 'light');
+  }
+
+  /* ============================================================
+     БЛОК 4. Инициализация
+     ============================================================ */
+  document.addEventListener('DOMContentLoaded', async () => {
+    await loadTranslations();
+
+    // Восстанавливаем сохранённый язык и тему или используем дефолт
+    const savedLang = localStorage.getItem(LANG_KEY) || 'ru';
+    const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
+    applyLanguage(savedLang);
+    applyTheme(savedTheme);
+
+    // Кнопки языка
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    });
+
+    // Переключатель темы
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+  });
+})();

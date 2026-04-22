@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="dtp-body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b0b0b0"/>
+      <stop offset="20%" stop-color="#d8d8d8"/>
+      <stop offset="50%" stop-color="#e5e5e5"/>
+      <stop offset="80%" stop-color="#d8d8d8"/>
+      <stop offset="100%" stop-color="#a0a0a0"/>
+    </linearGradient>
+    <linearGradient id="dtp-loop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#999"/>
+      <stop offset="20%" stop-color="#ccc"/>
+      <stop offset="50%" stop-color="#ddd"/>
+      <stop offset="80%" stop-color="#ccc"/>
+      <stop offset="100%" stop-color="#888"/>
+    </linearGradient>
+    <linearGradient id="dtp-purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6B21A8"/>
+    </linearGradient>
+    <filter id="dtp-drop">
+      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#00000025"/>
+    </filter>
+  </defs>
+  <!-- Base shadow -->
+  <ellipse cx="200" cy="355" rx="50" ry="6" fill="#00000015"/>
+  <!-- Base unit -->
+  <rect x="168" y="270" width="64" height="85" rx="32" fill="url(#dtp-body)" filter="url(#dtp-drop)"/>
+  <ellipse cx="200" cy="280" rx="28" ry="3" fill="#bbb" opacity="0.5"/>
+  <!-- LED display -->
+  <rect x="184" y="300" width="32" height="16" rx="3" fill="#111"/>
+  <text x="200" y="312" text-anchor="middle" fill="#6B21A8" font-family="monospace" font-size="9" font-weight="bold">AUTO</text>
+  <!-- Bladeless loop -->
+  <ellipse cx="200" cy="160" rx="72" ry="105" fill="none" stroke="url(#dtp-loop)" stroke-width="18" filter="url(#dtp-drop)"/>
+  <ellipse cx="200" cy="160" rx="54" ry="87" fill="#f8f9fa"/>
+  <!-- Air channel details -->
+  <ellipse cx="200" cy="160" rx="62" ry="95" fill="none" stroke="#ccc" stroke-width="1" opacity="0.5"/>
+  <ellipse cx="200" cy="160" rx="55" ry="88" fill="none" stroke="#bbb" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.3"/>
+  <!-- Connection neck -->
+  <rect x="188" y="258" width="24" height="18" rx="4" fill="url(#dtp-body)"/>
+  <rect x="186" y="262" width="28" height="3" rx="1.5" fill="url(#dtp-purple)" opacity="0.8"/>
+  <!-- Controls -->
+  <circle cx="188" cy="330" r="4" fill="none" stroke="#888" stroke-width="1"/>
+  <circle cx="200" cy="338" r="5" fill="#6B21A8" opacity="0.5"/>
+  <circle cx="212" cy="330" r="4" fill="none" stroke="#888" stroke-width="1"/>
+  <!-- Brand text -->
+  <text x="200" y="376" text-anchor="middle" fill="#555" font-family="'Helvetica Neue',Arial,sans-serif" font-size="10" font-weight="500" letter-spacing="3">DYSON</text>
+  <text x="200" y="392" text-anchor="middle" fill="#6B21A8" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="1">Purifier Cool TP10</text>
+</svg>

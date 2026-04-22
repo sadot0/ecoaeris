@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="x4p-body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#dedede"/>
+      <stop offset="20%" stop-color="#f8f8f8"/>
+      <stop offset="80%" stop-color="#f8f8f8"/>
+      <stop offset="100%" stop-color="#c8c8c8"/>
+    </linearGradient>
+    <linearGradient id="x4p-top-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0f0f0"/>
+      <stop offset="100%" stop-color="#e0e0e0"/>
+    </linearGradient>
+    <linearGradient id="x4p-accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF8C00"/>
+      <stop offset="100%" stop-color="#FF6700"/>
+    </linearGradient>
+    <filter id="x4p-drop">
+      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#00000022"/>
+    </filter>
+    <pattern id="x4p-holes" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="2" fill="#00000008"/>
+    </pattern>
+    <pattern id="x4p-vents" width="12" height="150" patternUnits="userSpaceOnUse">
+      <rect x="5" y="0" width="1" height="150" fill="#333"/>
+    </pattern>
+  </defs>
+  <!-- Base shadow -->
+  <ellipse cx="200" cy="350" rx="90" ry="10" fill="#00000015"/>
+  <!-- Main body -->
+  <rect x="120" y="40" width="160" height="305" rx="18" fill="url(#x4p-body)" filter="url(#x4p-drop)"/>
+  <!-- Top section -->
+  <rect x="120" y="40" width="160" height="50" rx="18" fill="url(#x4p-top-grad)"/>
+  <rect x="120" y="70" width="160" height="20" fill="url(#x4p-top-grad)"/>
+  <!-- Circular air outlet -->
+  <circle cx="200" cy="65" r="22" fill="none" stroke="#ddd" stroke-width="1.5"/>
+  <circle cx="200" cy="65" r="16" fill="none" stroke="#ddd" stroke-width="1"/>
+  <circle cx="200" cy="65" r="10" fill="none" stroke="#ddd" stroke-width="0.8"/>
+  <circle cx="200" cy="65" r="4" fill="#eee"/>
+  <!-- OLED Display -->
+  <rect x="163" y="100" width="74" height="38" rx="5" fill="#0a0a0a"/>
+  <text x="190" y="120" text-anchor="middle" fill="#4CAF50" font-family="'Courier New',monospace" font-size="16" font-weight="bold">22</text>
+  <text x="218" y="115" text-anchor="middle" fill="#777" font-family="Arial,sans-serif" font-size="7">AQI</text>
+  <text x="200" y="132" text-anchor="middle" fill="#555" font-family="Arial,sans-serif" font-size="6">PM2.5  22 ug/m3</text>
+  <!-- Touch controls -->
+  <circle cx="170" cy="152" r="4" fill="none" stroke="#aaa" stroke-width="0.8"/>
+  <circle cx="188" cy="152" r="4" fill="none" stroke="#aaa" stroke-width="0.8"/>
+  <circle cx="206" cy="152" r="4" fill="#FF6700" opacity="0.5"/>
+  <circle cx="224" cy="152" r="4" fill="none" stroke="#aaa" stroke-width="0.8"/>
+  <!-- Air intake: dot pattern + vertical vents via pattern -->
+  <rect x="128" y="170" width="144" height="150" rx="6" fill="url(#x4p-holes)"/>
+  <rect x="128" y="170" width="144" height="150" rx="6" fill="url(#x4p-vents)" opacity="0.06"/>
+  <!-- Side accent bars -->
+  <rect x="120" y="170" width="4" height="150" rx="2" fill="url(#x4p-accent)" opacity="0.7"/>
+  <rect x="276" y="170" width="4" height="150" rx="2" fill="url(#x4p-accent)" opacity="0.7"/>
+  <!-- Pro badge -->
+  <rect x="155" y="328" width="35" height="14" rx="3" fill="#FF6700"/>
+  <text x="172" y="338" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="8" font-weight="bold">PRO</text>
+  <!-- Bottom accent -->
+  <rect x="120" y="339" width="160" height="6" rx="3" fill="#FF6700" opacity="0.8"/>
+  <!-- Brand text -->
+  <text x="200" y="368" text-anchor="middle" fill="#555" font-family="'Helvetica Neue',Arial,sans-serif" font-size="10" font-weight="500" letter-spacing="3">XIAOMI</text>
+  <text x="200" y="384" text-anchor="middle" fill="#FF6700" font-family="'Helvetica Neue',Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="1">Smart Air Purifier 4 Pro</text>
+</svg>

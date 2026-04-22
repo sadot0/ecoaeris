@@ -1,0 +1,497 @@
+/* ============================================================
+   CONTACT — уникальный CSS от Асада
+   Фишка: @keyframes shake для ошибок + плавный accordion через max-height
+   ============================================================ */
+
+/* --- Hero: быстрые контакты --- */
+.quick-contacts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quick-contact {
+  background: var(--color-white);
+  padding: 28px 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient accent on hover */
+.quick-contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transition: transform var(--transition);
+  transform-origin: left;
+}
+
+.quick-contact:hover::before {
+  transform: scaleX(1);
+}
+
+.quick-contact:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+  color: var(--color-text);
+}
+
+.quick-contact:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.4);
+  outline-offset: 2px;
+}
+
+.quick-contact__icon {
+  font-size: 2rem;
+  transition: transform var(--transition);
+}
+
+.quick-contact:hover .quick-contact__icon {
+  transform: scale(1.15);
+}
+
+.quick-contact__label {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.quick-contact__value {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.quick-contact--tg {
+  background: #229ED9;
+  color: white;
+  border-color: #229ED9;
+}
+
+.quick-contact--tg .quick-contact__label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.quick-contact--tg::before {
+  background: linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+}
+
+.quick-contact--tg:hover {
+  background: #1a8fc4;
+  color: white;
+}
+
+/* --- Двухколоночная сетка --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* --- Форма --- */
+.contact-form-wrap h2 {
+  margin-bottom: 4px;
+}
+
+.form-subtitle {
+  color: var(--color-muted);
+  margin-bottom: 28px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.form-row:focus-within label {
+  color: var(--color-primary);
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+  padding: 12px 16px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition-fast);
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+.form-row input:hover,
+.form-row textarea:hover,
+.form-row select:hover {
+  border-color: #CBD5E1;
+}
+
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus {
+  outline: 0;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+  background: var(--color-white);
+}
+
+.form-row textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row input.error,
+.form-row textarea.error {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.form-row input.error:focus,
+.form-row textarea.error:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+/* УНИКАЛЬНАЯ АНИМАЦИЯ — тряска поля при ошибке */
+.shake {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-6px); }
+  20% { transform: translateX(6px); }
+  30% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  50% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  70% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  90% { transform: translateX(-1px); }
+}
+
+.form-error {
+  color: var(--color-danger);
+  font-size: 0.85rem;
+  margin-top: 6px;
+  min-height: 1.2em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: errorFadeIn 0.3s ease both;
+}
+
+@keyframes errorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form-feedback {
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-top: 12px;
+  line-height: 1.6;
+  animation: feedbackIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes feedbackIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-feedback--success {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #10B981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+/* --- Инфо-сайдбар --- */
+.contact-info {
+  background: var(--color-white);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  position: sticky;
+  top: 96px;
+}
+
+.contact-info h3 {
+  margin: 20px 0 10px;
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.contact-info h3:first-child {
+  margin-top: 0;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+  font-size: 0.95rem;
+}
+
+.socials a:hover {
+  color: var(--color-primary);
+  background: rgba(14, 165, 233, 0.06);
+}
+
+/* --- FAQ Accordion --- */
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.faq-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.faq-item.open {
+  border-color: rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.08);
+}
+
+.faq-item__head {
+  width: 100%;
+  padding: 20px 24px;
+  background: none;
+  border: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+  gap: 16px;
+  transition: color var(--transition-fast);
+}
+
+.faq-item__head:hover {
+  color: var(--color-primary);
+}
+
+.faq-item.open .faq-item__head {
+  color: var(--color-primary);
+}
+
+.faq-item__icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: rgba(14, 165, 233, 0.08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-item__icon {
+  transform: rotate(180deg);
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.faq-item__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+  padding: 0 24px;
+}
+
+.faq-item.open .faq-item__body {
+  padding-bottom: 24px;
+}
+
+.faq-item__body p {
+  color: var(--color-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .contact-grid {
+    gap: 32px;
+  }
+  .quick-contacts {
+    max-width: 700px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quick-contacts {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .contact-info {
+    position: static;
+  }
+  .faq-item__head {
+    padding: 16px 20px;
+    font-size: 1rem;
+  }
+  .faq-item__body {
+    padding: 0 20px;
+  }
+  .faq-item.open .faq-item__body {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-contact {
+    padding: 20px 16px;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 12px;
+  }
+  .quick-contact__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .form-row input,
+  .form-row textarea,
+  .form-row select {
+    padding: 10px 14px;
+    font-size: 16px; /* prevent iOS zoom */
+  }
+  .contact-form {
+    gap: 16px;
+  }
+  .faq-item__head {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+  .faq-item__icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 0.85rem;
+  }
+  .faq-item__body {
+    padding: 0 16px;
+  }
+  .faq-item.open .faq-item__body {
+    padding-bottom: 16px;
+  }
+  .faq-accordion {
+    margin: 0 -8px;
+  }
+}

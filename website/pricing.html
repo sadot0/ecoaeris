@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoAeris — Аренда очистителей воздуха</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pricing.css">
+</head>
+<body>
+
+  <!-- HEADER (одинаковый) -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="logo"><img src="assets/images/logo.svg" alt="EcoAeris" class="logo__icon" width="36" height="36"><span>EcoAeris</span></a>
+      <button class="nav-toggle" aria-label="Меню">☰</button>
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Главная</a>
+        <a href="shop.html" class="nav__link">Магазин</a>
+        <a href="calculator.html" class="nav__link">Калькулятор</a>
+        <a href="pricing.html" class="nav__link active">Аренда</a>
+        <a href="about.html" class="nav__link">О нас</a>
+        <a href="contact.html" class="nav__link">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="section pricing-hero">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__kicker">Аренда</span>
+          <h1>Аренда очистителей <br>от 180 000 сум/мес</h1>
+          <p class="section__subtitle">Идеально для офисов, кафе, школ, детских садов и производств</p>
+        </header>
+      </div>
+    </section>
+
+    <!-- ТАРИФЫ -->
+    <section class="section">
+      <div class="container">
+        <div class="plans">
+          <article class="card plan">
+            <div class="plan__badge">Базовый</div>
+            <h3>180 000</h3>
+            <span class="plan__period">сум / месяц</span>
+            <ul class="plan__features">
+              <li>✓ Xiaomi 3C или 4 Lite</li>
+              <li>✓ Покрытие до 45 м²</li>
+              <li>✓ 1 бесплатная замена фильтра</li>
+              <li>✓ Доставка и установка</li>
+              <li>✗ Замена модели</li>
+            </ul>
+            <p class="plan__best-for"><b>Подходит:</b> офис до 6 чел., салон красоты, кабинет</p>
+            <a href="https://t.me/EcoAerisBot?start=rent_basic" target="_blank" class="btn btn--primary">Оформить аренду</a>
+          </article>
+
+          <article class="card plan plan--popular">
+            <div class="plan__badge">Бизнес · популярный</div>
+            <h3>400 000</h3>
+            <span class="plan__period">сум / месяц</span>
+            <ul class="plan__features">
+              <li>✓ Philips AC1715 или Xiaomi 4 Pro</li>
+              <li>✓ Покрытие до 80 м²</li>
+              <li>✓ Замена фильтра каждые 6 мес</li>
+              <li>✓ Доставка и установка</li>
+              <li>✓ Замена модели без доплат</li>
+              <li>✓ Приложение для мониторинга</li>
+            </ul>
+            <p class="plan__best-for"><b>Подходит:</b> кафе, коворкинг, школьный класс, офис до 20 чел.</p>
+            <a href="https://t.me/EcoAerisBot?start=rent_business" target="_blank" class="btn btn--primary">Оформить аренду</a>
+          </article>
+
+          <article class="card plan">
+            <div class="plan__badge">Промышленный</div>
+            <h3>От 1 200 000</h3>
+            <span class="plan__period">сум / месяц</span>
+            <ul class="plan__features">
+              <li>✓ IQAir HealthPro или 2× Dyson TP10</li>
+              <li>✓ Покрытие 200+ м²</li>
+              <li>✓ Комплексное обслуживание</li>
+              <li>✓ Датчики PM2.5 по периметру</li>
+              <li>✓ Ежемесячный отчёт</li>
+              <li>✓ Персональный менеджер</li>
+            </ul>
+            <p class="plan__best-for"><b>Подходит:</b> детский сад, бизнес-центр, склад, цех</p>
+            <a href="https://t.me/EcoAerisBot?start=rent_enterprise" target="_blank" class="btn btn--primary">Оформить аренду</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ГРАФИК AQI -->
+    <section class="section section--warm">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__kicker">Почему это важно</span>
+          <h2>Качество воздуха за последние 7 дней</h2>
+          <p class="section__subtitle">Данные WAQI.info · сравнение трёх крупнейших городов Узбекистана</p>
+        </header>
+
+        <div class="chart-card">
+          <canvas id="aqi-chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- КОНВЕРТЕР PM2.5 → AQI -->
+    <section class="section">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__kicker">Инструмент</span>
+          <h2>PM2.5 → AQI конвертер</h2>
+          <p class="section__subtitle">Если вы видите значение в µg/m³ — узнайте что оно означает по шкале US EPA</p>
+        </header>
+
+        <div class="converter">
+          <div class="converter__input">
+            <label for="pm25-input">Значение PM2.5 (µg/m³)</label>
+            <input type="number" id="pm25-input" min="0" max="500" value="35" step="0.1">
+            <p class="converter__hint">Норма ВОЗ: ≤ 5 µg/m³ | В Ташкенте в среднем 31.4 µg/m³</p>
+          </div>
+
+          <div class="converter__result" id="converter-result">
+            <!-- Результат генерируется JS с анимацией счётчика -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ АРЕНДЫ -->
+    <section class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2>Часто задают</h2>
+        </header>
+        <dl class="faq">
+          <div>
+            <dt>Минимальный срок аренды?</dt>
+            <dd>3 месяца. После этого можно продлять или расторгать без штрафов.</dd>
+          </div>
+          <div>
+            <dt>Кто оплачивает замену фильтра?</dt>
+            <dd>В тарифе «Бизнес» и «Промышленный» — мы. В «Базовом» — первая замена бесплатна, далее 450 000 сум/шт.</dd>
+          </div>
+          <div>
+            <dt>Что если очиститель сломался?</dt>
+            <dd>Бесплатный ремонт или замена в течение 24 часов по Ташкенту.</dd>
+          </div>
+          <div>
+            <dt>Возможна ли покупка после аренды?</dt>
+            <dd>Да. 70% стоимости уже оплаченной аренды засчитывается в цену выкупа.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">EcoAeris</h3>
+          <p>Мониторинг воздуха и очистители для Узбекистана.</p>
+          <a href="https://t.me/EcoAerisBot" target="_blank" class="footer__tg-btn">📱 Telegram-бот</a>
+        </div>
+        <div><h4 class="footer__title">Продукт</h4><p><a href="shop.html">Магазин</a></p><p><a href="calculator.html">Калькулятор</a></p><p><a href="pricing.html">Аренда</a></p></div>
+        <div><h4 class="footer__title">Компания</h4><p><a href="about.html">О нас</a></p><p><a href="contact.html">Контакты</a></p></div>
+        <div><h4 class="footer__title">Данн��е</h4><p>WAQI.info</p></div>
+      </div>
+      <div class="footer__bottom">© <span id="footer-year">2026</span> EcoAeris</div>
+    </div>
+  </footer>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/pricing.js"></script>
+</body>
+</html>

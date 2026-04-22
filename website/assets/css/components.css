@@ -1,0 +1,111 @@
+/* ============================================================
+   EcoAeris — COMPONENTS
+   Переиспользуемые UI-компоненты (кнопки, карточки, бейджи).
+   ============================================================ */
+
+/* --- Кнопки --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
+}
+
+.btn--primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn--secondary:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+
+.btn--large {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* --- Карточка (универсальная) --- */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+/* --- AQI-бейдж: цвет зависит от значения --- */
+.aqi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: white;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.aqi-badge--good { background: var(--aqi-good); color: #064E3B; }
+.aqi-badge--moderate { background: var(--aqi-moderate); color: #78350F; }
+.aqi-badge--usg { background: var(--aqi-usg); color: white; }
+.aqi-badge--unhealthy { background: var(--aqi-unhealthy); color: white; }
+.aqi-badge--very-unhealthy { background: var(--aqi-very-unhealthy); color: white; }
+.aqi-badge--hazardous { background: var(--aqi-hazardous); color: white; }
+
+/* --- Пустое состояние --- */
+.empty {
+  text-align: center;
+  color: var(--color-muted);
+  padding: 48px 24px;
+  font-size: 1rem;
+}
