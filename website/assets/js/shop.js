@@ -218,7 +218,7 @@
     }
     if (f.coverage.length) {
       result = result.filter((p) => {
-        if (f.coverage.includes('small') && p.coverage < 40) return true;
+        if (f.coverage.includes('small') && p.coverage <= 40) return true;
         if (f.coverage.includes('medium') && p.coverage >= 40 && p.coverage < 80) return true;
         if (f.coverage.includes('large') && p.coverage >= 80) return true;
         return false;
@@ -264,6 +264,7 @@
         if (el.type === 'checkbox') el.checked = false;
       });
       document.querySelector('input[data-filter="price"][value=""]').checked = true;
+      document.getElementById('sort-select').value = 'price-asc';
       applyFilters();
     });
 

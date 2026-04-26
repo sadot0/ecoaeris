@@ -26,7 +26,7 @@
   ╚══════════════════════════════════════════════╝
 -->
 
-  <!-- HEADER с переключателями (это моё добавление — добавить во все страницы) -->
+  <!-- HEADER с переключателями -->
   <header class="site-header">
     <div class="container site-header__inner">
       <a href="index.html" class="logo"><img src="assets/images/logo.svg" alt="EcoAeris" class="logo__icon" width="36" height="36"><span>EcoAeris</span></a>
@@ -121,7 +121,7 @@
         <header class="section__header">
           <h2 data-i18n="about.team.title">Команда</h2>
         </header>
-        <div class="team-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="team-grid">
           <article class="card team-member">
             <div class="team-member__avatar">А</div>
             <h3>Арсений</h3>
@@ -157,37 +157,36 @@
     </section>
   </main>
 
-  <!-- FOOTER (одинаковый + i18n) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer__grid">
         <div>
           <h3 class="footer__title">EcoAeris</h3>
-          <p data-i18n="footer.tagline">Мониторинг воздуха и очистители для Узбекистана.</p>
-          <a href="https://t.me/EcoAeris_team_bot?start=website" target="_blank" class="footer__tg-btn" data-i18n="footer.bot">📱 Открыть Telegram-бота</a>
+          <p>Мониторинг воздуха и очистители для Узбекистана.</p>
+          <a href="https://t.me/EcoAeris_team_bot?start=website" target="_blank" rel="noopener" class="footer__tg-btn">Открыть Telegram-бот</a>
         </div>
         <div>
-          <h4 class="footer__title" data-i18n="footer.product">Продукт</h4>
-          <p><a href="shop.html" data-i18n="nav.shop">Магазин</a></p>
-          <p><a href="calculator.html" data-i18n="nav.calc">Калькулятор</a></p>
-          <p><a href="pricing.html" data-i18n="nav.rent">Аренда</a></p>
+          <h4 class="footer__title">Продукт</h4>
+          <p><a href="shop.html">Магазин</a></p>
+          <p><a href="calculator.html">Калькулятор</a></p>
+          <p><a href="pricing.html">Аренда</a></p>
         </div>
         <div>
-          <h4 class="footer__title" data-i18n="footer.company">Компания</h4>
-          <p><a href="about.html" data-i18n="nav.about">О нас</a></p>
-          <p><a href="contact.html" data-i18n="nav.contact">Контакты</a></p>
+          <h4 class="footer__title">Компания</h4>
+          <p><a href="about.html">О нас</a></p>
+          <p><a href="contact.html">Контакты</a></p>
         </div>
         <div>
-          <h4 class="footer__title" data-i18n="footer.data">Данные</h4>
-          <p>WAQI.info</p>
+          <h4 class="footer__title">Данные</h4>
+          <p>Источник: WAQI.info</p>
         </div>
       </div>
-      <div class="footer__bottom">© <span id="footer-year">2026</span> EcoAeris</div>
+      <div class="footer__bottom">&copy; <span id="footer-year">2026</span> EcoAeris</div>
     </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/about.js"></script>
-<a href="https://t.me/EcoAeris_team_bot?start=website" target="_blank" class="tg-float" aria-label="Telegram бот">💬</a>
+<a href="https://t.me/EcoAeris_team_bot?start=website" target="_blank" rel="noopener" class="tg-float" aria-label="Telegram бот">💬</a>
 </body>
 </html>

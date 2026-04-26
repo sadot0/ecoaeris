@@ -16,7 +16,7 @@
   66%      { transform: translate(-10px, 15px) scale(0.97); }
 }
 
-@keyframes fadeInUp {
+@keyframes heroFadeInUp {
   from {
     opacity: 0;
     transform: translateY(32px);
@@ -58,7 +58,7 @@
    =================== */
 
 .fade-in-up {
-  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .fade-in-up:nth-child(1) { animation-delay: 0s; }
@@ -122,7 +122,7 @@
   gap: 64px;
   align-items: center;
   padding: 100px 0 120px;
-  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero h1 {
@@ -169,7 +169,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   text-align: center;
   transition: transform var(--transition), box-shadow var(--transition);
-  animation: fadeInUp 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeInUp 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .aqi-widget:hover {
@@ -250,25 +250,6 @@
   margin: 0 auto 20px;
 }
 
-.skeleton-line {
-  height: 14px;
-  border-radius: 7px;
-  background: linear-gradient(
-    100deg,
-    #E2E8F0 0%,
-    #E2E8F0 30%,
-    #F1F5F9 50%,
-    #E2E8F0 70%,
-    #E2E8F0 100%
-  );
-  background-size: 300% 100%;
-  animation: skeleton-shine 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  margin: 0 auto 10px;
-}
-
-.skeleton-line:nth-child(2) { width: 60%; animation-delay: 0.15s; }
-.skeleton-line:nth-child(3) { width: 40%; animation-delay: 0.3s; }
-
 /* ===================
    MAP (WAQI iframe)
    =================== */
@@ -280,7 +261,7 @@
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
-  animation: fadeInUp 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeInUp 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .map-wrap iframe {
@@ -292,7 +273,7 @@
 
 /* Section header entrance animation (home-specific) */
 .section__header {
-  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ===================
@@ -311,7 +292,7 @@
   padding: 24px 16px;
   border-top: 3px solid transparent;
   transition: border-color var(--transition), transform var(--transition);
-  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .stat-card:hover {
@@ -358,7 +339,7 @@
   position: relative;
   padding: 32px 24px;
   text-align: center;
-  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .step:nth-child(1) { animation-delay: 0s; }
@@ -403,10 +384,6 @@
 
   .hero h1 {
     font-size: clamp(2rem, 5vw, 3rem);
-  }
-
-  #leaflet-map {
-    height: 480px;
   }
 
   .stats-grid {
@@ -471,11 +448,6 @@
     font-size: 4.5rem;
   }
 
-  #leaflet-map {
-    height: 400px;
-    border-radius: var(--radius-lg);
-  }
-
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
@@ -528,11 +500,6 @@
 
   .aqi-widget__category {
     font-size: 1.1rem;
-  }
-
-  #leaflet-map {
-    height: 320px;
-    border-radius: var(--radius-md);
   }
 
   .stats-grid {

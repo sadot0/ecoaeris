@@ -26,16 +26,9 @@
     });
   }
 
-  /* --- Активная ссылка в меню ---
-     Определяем имя текущей страницы из URL и добавляем класс 'active'
-     к соответствующей ссылке навигации для визуальной подсветки. */
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  /* --- Закрытие мобильного меню при клике на ссылку --- */
   document.querySelectorAll('.nav__link').forEach((link) => {
-    const href = link.getAttribute('href');
-    // Сравниваем href ссылки с именем текущего файла
-    if (href === currentPage) {
-      link.classList.add('active');
-    }
+    link.addEventListener('click', () => { if (nav) nav.classList.remove('open'); });
   });
 
   /* --- Год в футере ---
