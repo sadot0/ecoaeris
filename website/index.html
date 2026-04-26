@@ -17,9 +17,6 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
 
-  <!-- Leaflet для карты -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-
   <!-- Стили именно этой страницы -->
   <link rel="stylesheet" href="assets/css/home.css">
 
@@ -89,18 +86,17 @@
           </p>
         </header>
 
-        <!-- Контейнер для Leaflet-карты -->
-        <div id="leaflet-map" role="application" aria-label="Интерактивная карта AQI Узбекистана"></div>
-
-        <!-- Легенда -->
-        <aside class="map-legend">
-          <span class="aqi-badge aqi-badge--good">0–50</span>
-          <span class="aqi-badge aqi-badge--moderate">51–100</span>
-          <span class="aqi-badge aqi-badge--usg">101–150</span>
-          <span class="aqi-badge aqi-badge--unhealthy">151–200</span>
-          <span class="aqi-badge aqi-badge--very-unhealthy">201–300</span>
-          <span class="aqi-badge aqi-badge--hazardous">301+</span>
-        </aside>
+        <!-- Карта качества воздуха — реальная тепловая карта WAQI -->
+        <div class="map-wrap">
+          <iframe
+            src="https://aqicn.org/map/uzbekistan/#@g/41.3/69.3/6z"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            scrolling="no"
+            title="Карта качества воздуха Узбекистана"
+          ></iframe>
+        </div>
       </div>
     </section>
 
@@ -196,14 +192,9 @@
     </div>
   </footer>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <!-- Общие JS -->
   <script src="assets/js/api.js"></script>
   <script src="assets/js/main.js"></script>
-
-  <!-- JS этой страницы -->
   <script src="assets/js/home.js"></script>
 <a href="https://t.me/ecoaerisbot?start=website" target="_blank" class="tg-float" aria-label="Telegram бот">💬</a>
 </body>
