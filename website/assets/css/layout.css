@@ -127,6 +127,7 @@
     padding: 24px;
     gap: 4px;
     overflow-y: auto;
+    z-index: 999;
   }
   .nav.open .nav__link {
     font-size: 1.1rem;
@@ -227,6 +228,10 @@
   .footer__grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+  .footer__tg-btn {
+    width: 100%;
+    text-align: center;
   }
 }
 

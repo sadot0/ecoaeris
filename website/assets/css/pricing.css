@@ -479,12 +479,24 @@
     font-size: 1.8rem;
   }
 
+  .converter {
+    grid-template-columns: 1fr;
+  }
+
   .converter__value {
     font-size: 3.2rem;
   }
 
   .converter__card {
     padding: 28px;
+  }
+
+  .plan--popular {
+    transform: none;
+  }
+
+  .plan--popular:hover {
+    transform: translateY(-4px);
   }
 
   .chart-card {

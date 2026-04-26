@@ -423,12 +423,12 @@
 
 @media (max-width: 480px) {
   .wizard {
-    padding: 20px 16px;
+    padding: 16px;
     min-height: 280px;
     border-radius: var(--radius-sm);
   }
   .options {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
   }
   .option-card {

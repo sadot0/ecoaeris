@@ -136,6 +136,10 @@ button {
   font-family: var(--font-body);
 }
 
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* --- Утилиты --- */
 .container {
   max-width: var(--container-max);
@@ -227,5 +231,6 @@ button {
 
 @media (max-width: 480px) {
   .section { padding: 48px 0; }
+  .container { padding: 0 16px; }
   html { font-size: 15px; }
 }

@@ -544,7 +544,7 @@
 
 @media (max-width: 480px) {
   .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 12px;
   }
   .product-card__body {
@@ -557,9 +557,14 @@
   .product-card__price {
     font-size: 1.05rem;
   }
+  .product-card__bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
   .product-card__bottom .btn {
     padding: 8px 14px;
     font-size: 0.8rem;
+    width: 100%;
   }
   .product-card__img img {
     padding: 12px;

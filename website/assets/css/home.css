@@ -498,7 +498,10 @@
    =================== */
 
 @media (max-width: 480px) {
-  .map-wrap { height: 350px; border-radius: var(--radius-lg); }
+  .map-wrap { height: 300px; border-radius: var(--radius-md); }
+  .hero__cta .btn {
+    width: 100%;
+  }
   .hero__inner {
     padding: 40px 0 60px;
     gap: 28px;
@@ -532,7 +535,7 @@
   }
 
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
