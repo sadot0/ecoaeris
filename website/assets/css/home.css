@@ -326,6 +326,19 @@
   border: none !important;
 }
 
+/* Map hint text */
+.map-hint {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.map-hint a {
+  font-weight: 600;
+}
+
 /* Map legend */
 .map-legend {
   display: flex;

@@ -124,28 +124,67 @@
     // По умолчанию — светлая
     baseLight.addTo(map);
 
-    // ⭐ ТЕПЛОВОЙ СЛОЙ WAQI — реальные данные AQI со всех станций мира
-    // Тайлы раскрашивают карту по US EPA шкале (зелёный → красный → фиолетовый)
+    // ⭐ ТЕПЛОВОЙ СЛОЙ WAQI — реальные данные AQI со ВСЕХ станций мира
+    // Раскрашивает карту по US EPA шкале: зелёный → жёлтый → оранжевый → красный → фиолетовый
+    // Видно загрязнение каждой страны и региона в реальном времени
     const aqiHeatLayer = L.tileLayer(
       'https://tiles.aqicn.org/tiles/usepa-aqi/{z}/{x}/{y}.png?token=' + WAQI_TOKEN, {
-      attribution: '© <a href="https://aqicn.org">WAQI.info</a> Air Quality Data',
-      opacity: 0.55,
+      attribution: '© <a href="https://aqicn.org" target="_blank">WAQI.info</a> · Данные качества воздуха',
+      opacity: 0.75,       // Яркость тепловой карты (0.75 — хорошо видно цвета)
       maxZoom: 18,
     });
 
-    // Добавляем тепловой слой поверх базовой карты
+    // Слой PM2.5 (альтернативная визуализация — мелкие частицы)
+    const pm25Layer = L.tileLayer(
+      'https://tiles.aqicn.org/tiles/usepa-pm25/{z}/{x}/{y}.png?token=' + WAQI_TOKEN, {
+      attribution: '© <a href="https://aqicn.org" target="_blank">WAQI.info</a>',
+      opacity: 0.7,
+      maxZoom: 18,
+    });
+
+    // Добавляем тепловой слой AQI поверх базовой карты
     aqiHeatLayer.addTo(map);
 
-    // Переключатель слоёв
+    // Переключатель слоёв (пользователь может менять стиль карты и тип данных)
     const baseLayers = {
-      'Светлая': baseLight,
-      'Стандартная': baseOSM,
-      'Тёмная': baseDark,
+      '🗺 Светлая': baseLight,
+      '🗺 Стандартная': baseOSM,
+      '🗺 Тёмная': baseDark,
     };
     const overlays = {
       '🌡 Тепловая карта AQI': aqiHeatLayer,
+      '💨 Карта PM2.5': pm25Layer,
     };
-    L.control.layers(baseLayers, overlays, { position: 'topright' }).addTo(map);
+    L.control.layers(baseLayers, overlays, {
+      position: 'topright',
+      collapsed: false,   // Всегда развёрнуто — пользователь сразу видит опции
+    }).addTo(map);
+
+    // Zoom-out кнопка — показать весь мир (чтобы увидеть все страны)
+    const worldBtn = L.control({ position: 'topleft' });
+    worldBtn.onAdd = function () {
+      const div = L.DomUtil.create('div', 'leaflet-bar');
+      div.innerHTML = '<a href="#" title="Показать весь мир" style="font-size:18px;width:34px;height:34px;line-height:34px;text-align:center;display:block;text-decoration:none">🌍</a>';
+      div.querySelector('a').addEventListener('click', function (e) {
+        e.preventDefault();
+        map.setView([25, 50], 3); // Зум на весь мир — видно все страны
+      });
+      return div;
+    };
+    worldBtn.addTo(map);
+
+    // Кнопка — вернуться на Узбекистан
+    const uzBtn = L.control({ position: 'topleft' });
+    uzBtn.onAdd = function () {
+      const div = L.DomUtil.create('div', 'leaflet-bar');
+      div.innerHTML = '<a href="#" title="Вернуться к Узбекистану" style="font-size:14px;width:34px;height:34px;line-height:34px;text-align:center;display:block;text-decoration:none;font-weight:bold">UZ</a>';
+      div.querySelector('a').addEventListener('click', function (e) {
+        e.preventDefault();
+        map.setView(MAP_CENTER, MAP_ZOOM);
+      });
+      return div;
+    };
+    uzBtn.addTo(map);
 
     return map;
   }
