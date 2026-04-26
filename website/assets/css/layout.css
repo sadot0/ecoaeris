@@ -142,6 +142,10 @@
   .nav-toggle { display: flex; align-items: center; justify-content: center; }
 }
 
+[data-theme="dark"] .nav.open {
+  background: rgba(15, 23, 42, 0.98);
+}
+
 /* --- Footer --- */
 .site-footer {
   background: var(--color-dark);

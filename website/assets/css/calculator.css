@@ -107,11 +107,6 @@
 }
 
 /* Slide-in alias kept for backward compat */
-@keyframes slide-in {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
 .wizard__step h2 {
   text-align: center;
   margin-bottom: 32px;
@@ -350,6 +345,60 @@
   font-weight: 800;
   color: var(--color-primary);
   margin-bottom: 16px;
+}
+
+.recommendation__match {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 12px;
+  padding: 6px 14px;
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.recommendation__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recommendation__coverage {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.alt {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.alt__img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+}
+
+.alt__match {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.alt__price {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary);
 }
 
 .recommendation__pros {

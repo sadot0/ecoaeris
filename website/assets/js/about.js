@@ -25,7 +25,6 @@
       const resp = await fetch('assets/data/i18n.json');
       translations = await resp.json();
     } catch (err) {
-      console.error('Не удалось загрузить i18n.json:', err);
       translations = { ru: {}, uz: {}, en: {} };
     }
   }

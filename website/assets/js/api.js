@@ -53,7 +53,7 @@ const AirQualityAPI = {
         if (attempt < retries) {
           // Wait before retrying (exponential backoff: 1s, 2s)
           await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
-          console.warn(`[WAQI] Retry ${attempt + 1}/${retries} for ${city}…`);
+          // silently retry
         } else {
           throw err;
         }

@@ -144,6 +144,10 @@ body {
   background: linear-gradient(150deg, #ECFEFF 0%, #CFFAFE 50%, #FAFBFC 100%);
 }
 
+[data-theme="dark"] .about-hero {
+  background: linear-gradient(150deg, #0C1E2E 0%, #0F2A3D 50%, var(--color-bg) 100%);
+}
+
 /* --- Story (two columns) --- */
 .about-grid {
   display: grid;
