@@ -309,6 +309,23 @@
   margin: 8px 0;
 }
 
+/* Tooltip styling */
+.aqi-tooltip {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Leaflet layer control styling */
+.leaflet-control-layers {
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+  border: none !important;
+}
+
 /* Map legend */
 .map-legend {
   display: flex;
