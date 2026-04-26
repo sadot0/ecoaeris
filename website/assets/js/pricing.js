@@ -18,6 +18,7 @@
      WAQI API /feed/{city}/history (но бесплатный тариф не даёт history).
      Поэтому имитируем реалистичные значения на основе IQAir-отчёта.
      ============================================================ */
+  /** generateDemoAQI — генерирует реалистичные демо-данные AQI за последние 7 дней */
   function generateDemoAQI() {
     const days = [];
     const today = new Date();
@@ -39,6 +40,7 @@
   /* ============================================================
      БЛОК 2. Инициализация Chart.js
      ============================================================ */
+  /** initChart — создаёт линейный Chart.js график AQI для 3 городов */
   function initChart() {
     const ctx = document.getElementById('aqi-chart');
     if (!ctx) return;
@@ -120,6 +122,7 @@
     [225.5, 500,  301, 500, 'Опасный',           '#7E0023'],
   ];
 
+  /** pm25ToAQI — конвертирует значение PM2.5 в AQI по формуле US EPA */
   function pm25ToAQI(pm25) {
     const bp = EPA_BREAKPOINTS.find((b) => pm25 >= b[0] && pm25 <= b[1]);
     if (!bp) return { aqi: 500, category: 'За шкалой', color: '#7E0023' };
@@ -136,6 +139,7 @@
      БЛОК 4. Анимация счётчика AQI (от 0 до значения)
      Уникальная деталь — плавное "проматывание" числа
      ============================================================ */
+  /** animateCounter — плавно анимирует числовое значение AQI (ease-out-cubic) */
   function animateCounter(target, duration = 800) {
     const el = document.querySelector('.converter__value');
     if (!el) return;
@@ -154,6 +158,7 @@
     requestAnimationFrame(step);
   }
 
+  /** renderConverter — рендерит карточку результата конвертера PM2.5 -> AQI */
   function renderConverter(pm25) {
     const result = pm25ToAQI(pm25);
     const container = document.getElementById('converter-result');

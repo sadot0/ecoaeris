@@ -51,6 +51,7 @@
   /* ============================================================
      БЛОК 2. Показать ошибку под полем + shake-анимация
      ============================================================ */
+  /** showError — показывает сообщение об ошибке под полем и запускает shake-анимацию */
   function showError(fieldName, message) {
     const errorEl = document.querySelector(`.form-error[data-for="${fieldName}"]`);
     const input = document.querySelector(`[name="${fieldName}"], #${fieldName}`);
@@ -67,6 +68,7 @@
     }
   }
 
+  /** clearErrors — очищает все сообщения об ошибках и убирает класс error */
   function clearErrors() {
     document.querySelectorAll('.form-error').forEach((el) => (el.textContent = ''));
     document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form select')
@@ -76,6 +78,7 @@
   /* ============================================================
      БЛОК 3. Обработка submit формы
      ============================================================ */
+  /** handleSubmit — обработчик отправки формы: валидация полей и показ результата */
   function handleSubmit(e) {
     e.preventDefault();
     clearErrors();
@@ -127,6 +130,7 @@
      БЛОК 4. FAQ Accordion
      Логика: клик открывает/закрывает, при открытии закрываем остальные
      ============================================================ */
+  /** initAccordion — инициализирует FAQ accordion: клик открывает/закрывает блоки */
   function initAccordion() {
     const items = document.querySelectorAll('.faq-item');
 
@@ -159,6 +163,7 @@
   /* ============================================================
      БЛОК 5. Маска ввода телефона (опционально — улучшает UX)
      ============================================================ */
+  /** initPhoneMask — маска ввода телефона: автоформатирование в +998 XX XXX-XX-XX */
   function initPhoneMask() {
     const phone = document.getElementById('phone');
     if (!phone) return;
