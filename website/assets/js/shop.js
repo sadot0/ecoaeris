@@ -35,6 +35,7 @@
      ============================================================ */
   const CART_KEY = 'ecoaeris_cart';
 
+  /** getCart — читает корзину из LocalStorage; при ошибке возвращает пустой массив */
   function getCart() {
     try {
       return JSON.parse(localStorage.getItem(CART_KEY)) || [];
@@ -43,10 +44,12 @@
     }
   }
 
+  /** saveCart — сохраняет массив корзины в LocalStorage */
   function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }
 
+  /** addToCart — добавляет товар в корзину или увеличивает qty на 1 */
   function addToCart(productId) {
     const cart = getCart();
     const existing = cart.find((item) => item.id === productId);
@@ -59,12 +62,14 @@
     renderCart();
   }
 
+  /** removeFromCart — полностью удаляет товар из корзины по id */
   function removeFromCart(productId) {
     const cart = getCart().filter((item) => item.id !== productId);
     saveCart(cart);
     renderCart();
   }
 
+  /** changeQty — изменяет количество товара в корзине на delta (+1 или -1) */
   function changeQty(productId, delta) {
     const cart = getCart();
     const item = cart.find((i) => i.id === productId);
@@ -78,6 +83,7 @@
   /* ============================================================
      БЛОК 3. Рендер карточек товаров
      ============================================================ */
+  /** renderProducts — рендерит карточки товаров в сетку #products-grid */
   function renderProducts(products) {
     const grid = document.getElementById('products-grid');
     const counter = document.getElementById('result-count');
@@ -121,6 +127,7 @@
     });
   }
 
+  /** renderCart — рендерит содержимое корзины (бейдж, список, итого) */
   function renderCart() {
     const cart = getCart();
     const body = document.getElementById('cart-body');
@@ -175,6 +182,7 @@
   /* ============================================================
      БЛОК 4. Фильтры и сортировка
      ============================================================ */
+  /** getActiveFilters — собирает текущие значения всех чекбоксов и радио-фильтров */
   function getActiveFilters() {
     const filters = { brands: [], price: null, coverage: [], availableOnly: false };
 
@@ -197,6 +205,7 @@
     return filters;
   }
 
+  /** applyFilters — фильтрует и сортирует товары, затем перерендеривает сетку */
   function applyFilters() {
     const f = getActiveFilters();
     let result = [...PRODUCTS];
@@ -228,6 +237,7 @@
     renderProducts(result);
   }
 
+  /** formatPrice — форматирует число в удобочитаемую цену с пробелами */
   function formatPrice(n) {
     return n.toLocaleString('ru-RU').replace(/,/g, ' ');
   }

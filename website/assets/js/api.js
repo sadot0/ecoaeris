@@ -13,10 +13,14 @@
  *   console.log(data.aqi);  // 156
  */
 
-// ⚠️ Временный публичный демо-токен WAQI. На продакшне замените на свой!
+// Временный публичный демо-токен WAQI. На продакшне замените на свой!
 // Получить токен: https://aqicn.org/data-platform/token/
 const WAQI_TOKEN = 'demo';  // TODO: заменить на рабочий токен
 
+/**
+ * Объект AirQualityAPI — содержит все методы для работы с WAQI API.
+ * Глобально доступен через window.AirQualityAPI.
+ */
 const AirQualityAPI = {
   /**
    * Получить AQI по названию города.
@@ -94,5 +98,6 @@ const AirQualityAPI = {
   },
 };
 
-// Делаем доступным глобально (для простоты — задание не требует модули)
+// Делаем объект доступным глобально, чтобы другие скрипты (home.js, pricing.js)
+// могли вызывать AirQualityAPI.getCityAQI() и AirQualityAPI.categorize()
 window.AirQualityAPI = AirQualityAPI;

@@ -58,6 +58,7 @@
   /* ============================================================
      БЛОК 3. Логика перехода между шагами
      ============================================================ */
+  /** showStep — показывает нужный шаг wizard'а и обновляет progress bar */
   function showStep(num) {
     document.querySelectorAll('.wizard__step').forEach((el) => {
       el.classList.toggle('active', parseInt(el.dataset.step) === num);
@@ -75,6 +76,7 @@
     }
   }
 
+  /** next — переход к следующему шагу; на шаге 5 запускает расчёт */
   function next() {
     if (state.step < 5) {
       state.step++;
@@ -83,6 +85,7 @@
     }
   }
 
+  /** back — переход к предыдущему шагу */
   function back() {
     if (state.step > 1) {
       state.step--;
@@ -255,6 +258,7 @@
   /* ============================================================
      БЛОК 5. Рендер результата
      ============================================================ */
+  /** calculateAndRender — запускает алгоритм скоринга и рендерит HTML с результатами */
   function calculateAndRender() {
     const { primary, alternatives } = calculate();
 
@@ -309,6 +313,7 @@
     `;
   }
 
+  /** formatPrice — форматирует число в удобочитаемую цену (пробелы как разделители) */
   function formatPrice(n) {
     return n.toLocaleString('ru-RU').replace(/,/g, ' ');
   }

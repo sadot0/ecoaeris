@@ -19,6 +19,7 @@
   /* ============================================================
      БЛОК 1. Загрузка переводов
      ============================================================ */
+  /** loadTranslations — загружает JSON-файл с переводами для трёх языков */
   async function loadTranslations() {
     try {
       const resp = await fetch('assets/data/i18n.json');
@@ -32,6 +33,7 @@
   /* ============================================================
      БЛОК 2. Применить язык ко всем элементам с data-i18n
      ============================================================ */
+  /** applyLanguage — применяет выбранный язык ко всем элементам с data-i18n */
   function applyLanguage(lang) {
     if (!translations || !translations[lang]) return;
 
@@ -58,6 +60,7 @@
      Работает через атрибут [data-theme] на <html>.
      CSS-переменные в base.css переопределяются для dark-темы.
      ============================================================ */
+  /** applyTheme — устанавливает тему (light/dark) через атрибут data-theme на html */
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(THEME_KEY, theme);
@@ -66,6 +69,7 @@
     if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
   }
 
+  /** toggleTheme — переключает тему между light и dark */
   function toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme') || 'light';
     applyTheme(current === 'light' ? 'dark' : 'light');

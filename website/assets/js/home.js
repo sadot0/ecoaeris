@@ -12,6 +12,10 @@
 (function () {
   'use strict';
 
+  /**
+   * loadHeroWidget — загружает данные AQI для Ташкента через API
+   * и рендерит виджет в hero-секции. При ошибке API использует fallback-значения.
+   */
   async function loadHeroWidget() {
     const w = document.getElementById('hero-aqi-widget');
     if (!w) return;
@@ -38,8 +42,9 @@
       </div>`;
   }
 
+  // При загрузке страницы вызываем виджет и ставим автообновление каждые 10 минут
   document.addEventListener('DOMContentLoaded', () => {
     loadHeroWidget();
-    setInterval(loadHeroWidget, 10 * 60 * 1000);
+    setInterval(loadHeroWidget, 10 * 60 * 1000); // обновление каждые 10 мин
   });
 })();
