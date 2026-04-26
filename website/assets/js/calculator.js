@@ -11,74 +11,31 @@
   'use strict';
 
   /* ============================================================
-     БЛОК 1. Каталог очистителей — 8 моделей
+     БЛОК 1. Каталог очистителей — 12 моделей
      Реальные модели с реальными ценами UZ
      ============================================================ */
   const PURIFIERS = [
-    {
-      id: 'xiaomi-3c', brand: 'Xiaomi', model: 'Mi Air Purifier 3C',
-      price: 1700000, coverage: 45, cadr: 320,
-      filter: 'HEPA H13', quiet: true,
-      tags: ['budget', 'apartment', 'kids'],
-      image: 'assets/images/purifiers/xiaomi-3c.svg',
-      pros: ['Бесшумный ночной режим', 'Удалённое управление', 'Бюджетный'],
-    },
-    {
-      id: 'xiaomi-4lite', brand: 'Xiaomi', model: 'Mi Air Purifier 4 Lite',
-      price: 2100000, coverage: 43, cadr: 360,
-      filter: 'HEPA H13', quiet: false,
-      tags: ['budget', 'apartment'],
-      image: 'assets/images/purifiers/xiaomi-4lite.svg',
-      pros: ['HEPA H13 фильтр', 'Компактный', 'Приложение Mi Home'],
-    },
-    {
-      id: 'xiaomi-4pro', brand: 'Xiaomi', model: 'Mi Smart Air Purifier 4 Pro',
-      price: 2990000, coverage: 60, cadr: 500,
-      filter: 'HEPA H13+Carbon', quiet: false,
-      tags: ['apartment', 'kids', 'allergy', 'mid'],
-      image: 'assets/images/purifiers/xiaomi-4pro.svg',
-      pros: ['HEPA H13 + угольный фильтр', 'OLED-дисплей', 'CADR 500 м3/ч'],
-    },
-    {
-      id: 'samsung-ax60', brand: 'Samsung', model: 'AX60R5080WD',
-      price: 3500000, coverage: 60, cadr: 467,
-      filter: 'HEPA+Carbon', quiet: false,
-      tags: ['apartment', 'house', 'mid', 'smoke'],
-      image: 'assets/images/purifiers/samsung-ax60.svg',
-      pros: ['Угольный фильтр от дыма', '3-ступенчатая фильтрация', 'Wi-Fi управление'],
-    },
-    {
-      id: 'philips-ac1715', brand: 'Philips', model: 'AC1715/10',
-      price: 5290000, coverage: 78, cadr: 550,
-      filter: 'NanoProtect HEPA', quiet: false,
-      tags: ['apartment', 'house', 'allergy'],
-      image: 'assets/images/purifiers/philips-ac1715.svg',
-      pros: ['NanoProtect HEPA', 'Режим сна', 'Датчик PM2.5'],
-    },
-    {
-      id: 'philips-ac2887', brand: 'Philips', model: 'AC2887/10',
-      price: 6890000, coverage: 79, cadr: 600,
-      filter: 'NanoProtect HEPA', quiet: false,
-      tags: ['house', 'office', 'allergy', 'high'],
-      image: 'assets/images/purifiers/philips-ac2887.svg',
-      pros: ['CADR 600 м3/ч', 'AeraSense датчик', 'Для больших помещений'],
-    },
-    {
-      id: 'dyson-tp10', brand: 'Dyson', model: 'Purifier Cool TP10',
-      price: 7690000, coverage: 80, cadr: 350,
-      filter: 'HEPA H13', quiet: false,
-      tags: ['apartment', 'house', 'premium', 'high', 'allergy'],
-      image: 'assets/images/purifiers/dyson-tp10.svg',
-      pros: ['360 фильтрация', 'Встроенный вентилятор', 'Премиум-дизайн'],
-    },
-    {
-      id: 'iqair-hp250', brand: 'IQAir', model: 'HealthPro 250',
-      price: 21000000, coverage: 200, cadr: 780,
-      filter: 'HyperHEPA H14', quiet: false,
-      tags: ['office', 'industrial', 'high'],
-      image: 'assets/images/purifiers/iqair.svg',
-      pros: ['Площадь до 200 м2', 'Медицинский HyperHEPA H14', 'Промышленное применение'],
-    },
+    // БЮДЖЕТ (до 2 млн)
+    { id: 'xiaomi-3c', brand: 'Xiaomi', model: 'Mi Air Purifier 3C', price: 1700000, coverage: 45, cadr: 320, filter: 'HEPA H13', quiet: true, tags: ['budget','apartment','kids'], image: 'assets/images/purifiers/xiaomi-3c.svg', pros: ['Бесшумный ночной режим','Приложение Mi Home','Самый бюджетный'] },
+    { id: 'xiaomi-4lite', brand: 'Xiaomi', model: 'Mi Air Purifier 4 Lite', price: 2100000, coverage: 43, cadr: 360, filter: 'HEPA H13', quiet: false, tags: ['budget','apartment'], image: 'assets/images/purifiers/xiaomi-4lite.svg', pros: ['HEPA H13 фильтр','Компактный размер','Приложение Mi Home'] },
+
+    // СРЕДНИЙ (2-5 млн)
+    { id: 'xiaomi-4pro', brand: 'Xiaomi', model: 'Mi Smart Air Purifier 4 Pro', price: 2990000, coverage: 60, cadr: 500, filter: 'HEPA H13+Carbon', quiet: false, tags: ['apartment','kids','allergy','smoke','mid'], image: 'assets/images/purifiers/xiaomi-4pro.svg', pros: ['HEPA H13 + угольный фильтр','OLED-дисплей','CADR 500 м³/ч'] },
+    { id: 'samsung-ax60', brand: 'Samsung', model: 'AX60R5080WD', price: 3500000, coverage: 60, cadr: 467, filter: 'HEPA+Carbon', quiet: false, tags: ['apartment','house','mid','smoke','pets'], image: 'assets/images/purifiers/xiaomi-4pro.svg', pros: ['3-ступенчатая фильтрация','Убирает запах дыма и животных','Wi-Fi управление'] },
+    { id: 'smartmi-p1', brand: 'Smartmi', model: 'Air Purifier P1', price: 4200000, coverage: 55, cadr: 400, filter: 'HEPA H13+Carbon', quiet: true, tags: ['apartment','house','kids','mid','dust'], image: 'assets/images/purifiers/xiaomi-4lite.svg', pros: ['Тихий как шёпот','Датчик CO2','Компактный и стильный'] },
+
+    // ВЫШЕ СРЕДНЕГО (5-10 млн)
+    { id: 'philips-ac1715', brand: 'Philips', model: 'AC1715/10', price: 5290000, coverage: 78, cadr: 550, filter: 'NanoProtect HEPA', quiet: false, tags: ['apartment','house','allergy','dust'], image: 'assets/images/purifiers/philips-ac1715.svg', pros: ['NanoProtect HEPA фильтр','Режим сна','Датчик PM2.5 в реальном времени'] },
+    { id: 'philips-ac2887', brand: 'Philips', model: 'AC2887/10', price: 6890000, coverage: 79, cadr: 600, filter: 'NanoProtect HEPA', quiet: false, tags: ['house','office','allergy','high'], image: 'assets/images/purifiers/philips-ac2887.svg', pros: ['CADR 600 м³/ч','AeraSense датчик','Для больших помещений'] },
+    { id: 'dyson-tp10', brand: 'Dyson', model: 'Purifier Cool TP10', price: 7690000, coverage: 80, cadr: 350, filter: 'HEPA H13+Carbon', quiet: false, tags: ['apartment','house','premium','high','allergy'], image: 'assets/images/purifiers/dyson-tp10.svg', pros: ['Вентилятор + очиститель 2в1','360° HEPA фильтрация','Премиум-дизайн'] },
+    { id: 'blueair-classic', brand: 'Blueair', model: 'Classic 480i', price: 8500000, coverage: 40, cadr: 476, filter: 'HEPASilent+Carbon', quiet: true, tags: ['apartment','house','allergy','kids','high','dust'], image: 'assets/images/purifiers/philips-ac1715.svg', pros: ['Шведский бренд №1','HEPASilent технология','Почти бесшумный'] },
+
+    // ПРЕМИУМ (10+ млн)
+    { id: 'dyson-ph04', brand: 'Dyson', model: 'Purifier Humidify+Cool PH04', price: 12900000, coverage: 100, cadr: 400, filter: 'HEPA H13+Carbon', quiet: false, tags: ['house','office','premium','high','allergy','dust'], image: 'assets/images/purifiers/dyson-tp10.svg', pros: ['Очистка + увлажнение + охлаждение','Формальдегид-сенсор','До 100 м²'] },
+
+    // ПРОМЫШЛЕННЫЙ (15+ млн)
+    { id: 'iqair-hp250', brand: 'IQAir', model: 'HealthPro 250', price: 21000000, coverage: 200, cadr: 780, filter: 'HyperHEPA H14', quiet: false, tags: ['office','industrial','high'], image: 'assets/images/purifiers/iqair.svg', pros: ['Медицинский HyperHEPA H14','До 200 м²','Швейцарское качество'] },
+    { id: 'airdog-x8', brand: 'Airdog', model: 'X8 Commercial', price: 28000000, coverage: 300, cadr: 1000, filter: 'TPA ионный', quiet: false, tags: ['industrial','high'], image: 'assets/images/purifiers/iqair.svg', pros: ['CADR 1000 м³/ч','Моющийся фильтр (без замены)','До 300 м²'] },
   ];
 
   /* ============================================================
@@ -164,7 +121,7 @@
    * rent = аренда, бюджет не ограничен (все получают 100).
    */
   function scoreBudget(purifier, budget) {
-    const budgetLimits = { low: 3000000, mid: 6000000, high: 15000000 };
+    const budgetLimits = { low: 3000000, mid: 6000000, high: 15000000, premium: 30000000 };
 
     if (budget === 'rent') return 100;
 
@@ -213,6 +170,19 @@
     if (needs === 'smoke') {
       const f = purifier.filter.toLowerCase();
       if (f.includes('carbon') || purifier.tags.includes('smoke')) {
+        score += 50;
+      }
+    }
+
+    if (needs === 'pets') {
+      const f = purifier.filter.toLowerCase();
+      if (f.includes('carbon')) {
+        score += 50;
+      }
+    }
+
+    if (needs === 'dust') {
+      if (purifier.cadr >= 450) {
         score += 50;
       }
     }

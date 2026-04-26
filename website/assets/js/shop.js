@@ -17,10 +17,15 @@
     { id: 1, brand: 'Xiaomi', model: 'Mi Air Purifier 3C', price: 1700000, coverage: 45, filter: 'HEPA H13', available: true, image: 'assets/images/purifiers/xiaomi-3c.svg', rating: 4.5 },
     { id: 2, brand: 'Xiaomi', model: 'Mi 4 Lite', price: 2100000, coverage: 43, filter: 'HEPA H13', available: true, image: 'assets/images/purifiers/xiaomi-4lite.svg', rating: 4.4 },
     { id: 3, brand: 'Xiaomi', model: 'Mi Smart 4 Pro', price: 2990000, coverage: 60, filter: 'HEPA H13 + Carbon', available: true, image: 'assets/images/purifiers/xiaomi-4pro.svg', rating: 4.7 },
-    { id: 4, brand: 'Philips', model: 'AC1715/10', price: 5290000, coverage: 78, filter: 'NanoProtect HEPA', available: true, image: 'assets/images/purifiers/philips-ac1715.svg', rating: 4.6 },
-    { id: 5, brand: 'Philips', model: 'AC2887', price: 6890000, coverage: 79, filter: 'NanoProtect HEPA', available: false, image: 'assets/images/purifiers/philips-ac2887.svg', rating: 4.8 },
-    { id: 6, brand: 'Dyson', model: 'Purifier Cool TP10', price: 7690000, coverage: 80, filter: 'HEPA H13', available: true, image: 'assets/images/purifiers/dyson-tp10.svg', rating: 4.9 },
-    { id: 7, brand: 'IQAir', model: 'HealthPro 250', price: 21000000, coverage: 200, filter: 'HyperHEPA', available: true, image: 'assets/images/purifiers/iqair.svg', rating: 5.0 },
+    { id: 4, brand: 'Samsung', model: 'AX60R5080WD', price: 3500000, coverage: 60, filter: 'HEPA + Carbon', available: true, image: 'assets/images/purifiers/xiaomi-4pro.svg', rating: 4.5 },
+    { id: 5, brand: 'Smartmi', model: 'Air Purifier P1', price: 4200000, coverage: 55, filter: 'HEPA H13 + Carbon', available: true, image: 'assets/images/purifiers/xiaomi-4lite.svg', rating: 4.6 },
+    { id: 6, brand: 'Philips', model: 'AC1715/10', price: 5290000, coverage: 78, filter: 'NanoProtect HEPA', available: true, image: 'assets/images/purifiers/philips-ac1715.svg', rating: 4.6 },
+    { id: 7, brand: 'Philips', model: 'AC2887/10', price: 6890000, coverage: 79, filter: 'NanoProtect HEPA', available: true, image: 'assets/images/purifiers/philips-ac2887.svg', rating: 4.8 },
+    { id: 8, brand: 'Dyson', model: 'Purifier Cool TP10', price: 7690000, coverage: 80, filter: 'HEPA H13 + Carbon', available: true, image: 'assets/images/purifiers/dyson-tp10.svg', rating: 4.9 },
+    { id: 9, brand: 'Blueair', model: 'Classic 480i', price: 8500000, coverage: 40, filter: 'HEPASilent + Carbon', available: false, image: 'assets/images/purifiers/philips-ac1715.svg', rating: 4.8 },
+    { id: 10, brand: 'Dyson', model: 'PH04 Humidify+Cool', price: 12900000, coverage: 100, filter: 'HEPA H13 + Carbon', available: true, image: 'assets/images/purifiers/dyson-tp10.svg', rating: 4.9 },
+    { id: 11, brand: 'IQAir', model: 'HealthPro 250', price: 21000000, coverage: 200, filter: 'HyperHEPA H14', available: true, image: 'assets/images/purifiers/iqair.svg', rating: 5.0 },
+    { id: 12, brand: 'Airdog', model: 'X8 Commercial', price: 28000000, coverage: 300, filter: 'TPA ионный', available: true, image: 'assets/images/purifiers/iqair.svg', rating: 4.7 },
   ];
 
   /* ============================================================

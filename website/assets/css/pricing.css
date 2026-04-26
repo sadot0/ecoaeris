@@ -63,51 +63,34 @@
 
 /* --- Popular plan: gradient border + elevated presence --- */
 .plan--popular {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(14, 165, 233, 0.04) 0%,
-      rgba(16, 185, 129, 0.04) 50%,
-      rgba(20, 184, 166, 0.04) 100%
-    ) padding-box,
-    linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-secondary)) border-box;
-  border: 2px solid transparent;
-  transform: scale(1.06);
-  box-shadow: var(--shadow-xl), 0 0 24px rgba(14, 165, 233, 0.15);
+  background: #FAFEFF;
+  border: 2px solid var(--color-primary);
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px rgba(14, 165, 233, 0.12);
   z-index: 2;
   animation: priceScaleIn 0.65s ease-out both;
   animation-delay: 0.15s;
 }
 
-.plan--popular::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-secondary));
-  z-index: -1;
-  opacity: 0.06;
-  transition: opacity var(--transition);
-}
-
 .plan--popular::after {
-  content: "";
+  content: "Популярный";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-secondary));
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  color: white;
+  padding: 4px 20px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .plan--popular:hover {
-  transform: scale(1.08) translateY(-4px);
-  box-shadow: var(--shadow-xl), 0 0 40px rgba(14, 165, 233, 0.2);
-}
-
-.plan--popular:hover::before {
-  opacity: 0.1;
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 12px 40px rgba(14, 165, 233, 0.18);
 }
 
 /* --- Plan badge --- */
