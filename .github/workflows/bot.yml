@@ -1,0 +1,29 @@
+name: Run Telegram Bot
+
+on:
+  push:
+    branches: [main]
+    paths: ['bot/**']
+  schedule:
+    # Перезапуск каждые 5 часов (GH Actions лимит 6 часов)
+    - cron: '0 */5 * * *'
+  workflow_dispatch: # Ручной запуск
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350  # ~5.8 часов
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install -r bot/requirements.txt
+
+      - name: Run bot
+        working-directory: bot
+        run: timeout 20400 python main.py || true  # 340 минут, потом cron перезапустит
