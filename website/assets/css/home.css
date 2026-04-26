@@ -284,41 +284,6 @@
   animation: fadeInUp 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Marker pulse animation */
-.aqi-marker {
-  animation: marker-pulse 2.5s ease-in-out infinite;
-}
-
-/* Map popup */
-.map-popup {
-  font-family: var(--font-body);
-  padding: 6px;
-  min-width: 190px;
-}
-
-.map-popup h4 {
-  font-family: var(--font-heading);
-  margin-bottom: 8px;
-}
-
-.map-popup__aqi {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 800;
-  line-height: 1;
-  margin: 8px 0;
-}
-
-/* Tooltip styling */
-.aqi-tooltip {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-  box-shadow: var(--shadow-sm);
-}
-
 /* Map legend */
 .map-legend {
   display: flex;

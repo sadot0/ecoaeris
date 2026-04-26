@@ -88,58 +88,31 @@
   }
 
   /* ============================================================
-     Маркеры станций
+     Маркеры станций (без шариков — только тепловая карта)
+     Загружаем данные для подписи
      ============================================================ */
-  async function addMarkers(map) {
-    let stations;
+  async function loadStationCount(map) {
     try {
-      stations = await AirQualityAPI.getStationsInBounds(UZ_BOUNDS);
+      const stations = await AirQualityAPI.getStationsInBounds(UZ_BOUNDS);
+      const sub = document.querySelector('#map .section__subtitle');
+      if (sub) sub.textContent = `${stations.length} станций · обновление каждые 10 мин · источник: WAQI.info`;
     } catch (e) {
-      stations = FALLBACK.map((s, i) => ({ uid: i, ...s }));
+      // тихо — тепловая карта и так показывает данные
     }
-
-    stations.filter(s => s.aqi > 0).forEach(s => {
-      const c = AirQualityAPI.categorize(s.aqi);
-      const r = Math.max(8, Math.min(18, 8 + s.aqi / 35));
-
-      L.circleMarker([s.lat, s.lon], {
-        radius: r,
-        fillColor: c.color,
-        color: '#fff',
-        weight: 2,
-        fillOpacity: 0.85,
-        className: 'aqi-marker',
-      })
-        .bindPopup(`<div class="map-popup"><h4>${s.station}</h4><div class="map-popup__aqi" style="color:${c.color}">AQI ${s.aqi}</div><div>${c.label}</div></div>`)
-        .bindTooltip(`AQI ${s.aqi}`, { direction: 'top', offset: [0, -8] })
-        .addTo(map);
-    });
-
-    // Обновляем подпись
-    const sub = document.querySelector('#map .section__subtitle');
-    if (sub) sub.textContent = `${stations.length} станций · обновление каждые 10 мин · источник: WAQI.info`;
   }
 
   /* ============================================================
      Автообновление
      ============================================================ */
-  function autoRefresh(map) {
-    setInterval(() => {
-      loadHeroWidget();
-      map.eachLayer(l => { if (l instanceof L.CircleMarker) map.removeLayer(l); });
-      addMarkers(map);
-    }, 10 * 60 * 1000);
-  }
-
   /* ============================================================
      Запуск
      ============================================================ */
   document.addEventListener('DOMContentLoaded', async () => {
     loadHeroWidget();
     const map = initMap();
-    if (map) {
-      await addMarkers(map);
-      autoRefresh(map);
-    }
+    if (map) loadStationCount(map);
+
+    // Обновление виджета каждые 10 мин
+    setInterval(() => loadHeroWidget(), 10 * 60 * 1000);
   });
 })();
