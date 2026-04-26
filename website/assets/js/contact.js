@@ -115,7 +115,7 @@
       ✅ <b>Заявка отправлена!</b><br>
       Мы позвоним на ${data.phone} в течение 30 минут.<br>
       Для ускорения — напишите нам в
-      <a href="https://t.me/EcoAerisBot?start=contact_${Date.now()}" target="_blank">Telegram</a>.
+      <a href="https://t.me/ecoaerisbot?start=contact_${Date.now()}" target="_blank">Telegram</a>.
     `;
 
     form.reset();
