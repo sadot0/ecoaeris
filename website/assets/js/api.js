@@ -13,6 +13,22 @@
  *   console.log(data.aqi);  // 156
  */
 
+/*
+ * Заметки команды:
+ *
+ * Этот файл — общий API-клиент для всего проекта.
+ * Написан Арсением (тимлид), используется на главной странице.
+ *
+ * WAQI API (aqicn.org) — бесплатный, до 1000 запросов/сек.
+ * Токен 'demo' — ограниченный, для продакшна нужен свой.
+ * Получить: https://aqicn.org/data-platform/token/
+ *
+ * Функции:
+ * - getCityAQI(city) — AQI по городу с retry
+ * - getStationsInBounds(bbox) — все станции в регионе
+ * - categorize(aqi) — уровень по шкале US EPA
+ */
+
 // Временный публичный демо-токен WAQI. На продакшне замените на свой!
 // Получить токен: https://aqicn.org/data-platform/token/
 const WAQI_TOKEN = 'demo';  // TODO: заменить на рабочий токен
