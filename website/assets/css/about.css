@@ -251,10 +251,10 @@ body {
 }
 
 .value-card__icon {
-  font-size: 3rem;
+  font-size: 3.2rem;
   margin-bottom: 16px;
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -283,7 +283,7 @@ body {
 /* --- Team grid --- */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   justify-items: center;
 }
@@ -358,9 +358,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .team-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 /* --- Responsive: 768px --- */
@@ -400,6 +397,12 @@ body {
     gap: 24px;
   }
 
+  .team-member__avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 1.8rem;
+  }
+
   .lang-switcher {
     order: 99;
     margin: 8px 0;
@@ -432,9 +435,9 @@ body {
   }
 
   .team-member__avatar {
-    width: 64px;
-    height: 64px;
-    font-size: 1.6rem;
+    width: 56px;
+    height: 56px;
+    font-size: 1.4rem;
   }
 
   .lang-switcher {

@@ -17,25 +17,38 @@ const AirQualityAPI = {
    * @param {string} city — slug города (например "tashkent")
    * @returns {Promise<Object>} объект с aqi, pm25, pm10, time, city
    */
-  async getCityAQI(city) {
+  async getCityAQI(city, retries = 2) {
     const url = `https://api.waqi.info/feed/${city}/?token=${WAQI_TOKEN}`;
-    const response = await fetch(url);
-    const json = await response.json();
 
-    if (json.status !== 'ok') {
-      throw new Error(`WAQI error for ${city}: ${json.data}`);
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+
+        if (json.status !== 'ok') {
+          throw new Error(`WAQI error for ${city}: ${json.data}`);
+        }
+
+        // Нормализуем ответ — вытаскиваем то что нам надо
+        return {
+          aqi: json.data.aqi,
+          city: json.data.city.name,
+          pm25: json.data.iaqi.pm25?.v ?? null,
+          pm10: json.data.iaqi.pm10?.v ?? null,
+          temperature: json.data.iaqi.t?.v ?? null,
+          humidity: json.data.iaqi.h?.v ?? null,
+          time: json.data.time.iso,
+        };
+      } catch (err) {
+        if (attempt < retries) {
+          // Wait before retrying (exponential backoff: 1s, 2s)
+          await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
+          console.warn(`[WAQI] Retry ${attempt + 1}/${retries} for ${city}…`);
+        } else {
+          throw err;
+        }
+      }
     }
-
-    // Нормализуем ответ — вытаскиваем то что нам надо
-    return {
-      aqi: json.data.aqi,
-      city: json.data.city.name,
-      pm25: json.data.iaqi.pm25?.v ?? null,
-      pm10: json.data.iaqi.pm10?.v ?? null,
-      temperature: json.data.iaqi.t?.v ?? null,
-      humidity: json.data.iaqi.h?.v ?? null,
-      time: json.data.time.iso,
-    };
   },
 
   /**

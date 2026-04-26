@@ -337,7 +337,14 @@
 .stat-card {
   text-align: center;
   padding: 24px 16px;
+  border-top: 3px solid transparent;
+  transition: border-color var(--transition), transform var(--transition);
   animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stat-card:hover {
+  border-image: linear-gradient(90deg, var(--color-primary), var(--color-secondary)) 1;
+  transform: translateY(-4px);
 }
 
 .stat-card:nth-child(1) { animation-delay: 0s; }
@@ -369,16 +376,15 @@
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   justify-items: center;
   position: relative;
 }
 
-/* Horizontal dotted connector between steps */
 .step {
   position: relative;
-  padding: 8px 0;
+  padding: 16px 0;
   animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -386,17 +392,6 @@
 .step:nth-child(2) { animation-delay: 0.12s; }
 .step:nth-child(3) { animation-delay: 0.24s; }
 .step:nth-child(4) { animation-delay: 0.36s; }
-
-/* Dotted line connector — appears to the right of each step except the last */
-.step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 32px; /* vertically centered on the step number circle */
-  left: calc(50% + 40px);
-  width: calc(100% - 56px);
-  border-top: 2.5px dashed var(--color-border);
-  pointer-events: none;
-}
 
 .step__num {
   width: 56px;
@@ -446,17 +441,7 @@
   }
 
   .steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Adjust connector for 2-col layout */
-  .step:nth-child(2)::after {
-    display: none;
-  }
-
-  .step:not(:last-child)::after {
-    width: calc(100% - 48px);
-    left: calc(50% + 36px);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -529,17 +514,8 @@
   .steps {
     grid-template-columns: 1fr;
     gap: 24px;
-    padding-left: 36px;
-  }
-
-  /* Vertical dotted line for mobile steps */
-  .step:not(:last-child)::after {
-    top: 56px;
-    left: 28px;
-    width: 0;
-    height: calc(100% - 32px);
-    border-top: none;
-    border-left: 2.5px dashed var(--color-border);
+    max-width: 400px;
+    margin: 0 auto;
   }
 
 }
@@ -594,13 +570,5 @@
     width: 48px;
     height: 48px;
     font-size: 1.25rem;
-  }
-
-  .steps {
-    padding-left: 28px;
-  }
-
-  .step:not(:last-child)::after {
-    left: 24px;
   }
 }
