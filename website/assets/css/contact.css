@@ -3,6 +3,11 @@
    Фишка: @keyframes shake для ошибок + плавный accordion через max-height
    ============================================================ */
 
+/* --- Contact hero --- */
+.contact-hero {
+  background: linear-gradient(160deg, #FFF1F2 0%, #FFE4E6 40%, var(--color-bg) 100%);
+}
+
 /* --- Hero: быстрые контакты --- */
 .quick-contacts {
   display: grid;

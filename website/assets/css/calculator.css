@@ -4,7 +4,7 @@
    ============================================================ */
 
 .calc-hero {
-  background: var(--color-warm);
+  background: linear-gradient(160deg, #FFF7ED 0%, #FFEDD5 40%, #FEF3C7 100%);
   min-height: 80vh;
 }
 
@@ -206,6 +206,14 @@
 .option-card__icon {
   font-size: 2.5rem;
   transition: transform var(--transition);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.option-card__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
 .option-card:hover .option-card__icon {
@@ -419,12 +427,20 @@
     min-height: 280px;
     border-radius: var(--radius-sm);
   }
+  .options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
   .option-card {
-    padding: 20px 16px;
-    gap: 8px;
+    padding: 16px 12px;
+    gap: 6px;
+    min-width: 0;
   }
   .option-card__icon {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+  .option-card__title {
+    font-size: 0.85rem;
   }
   .slider-value {
     font-size: 2rem;

@@ -29,6 +29,11 @@
   50%      { box-shadow: var(--shadow-xl), 0 0 30px rgba(14, 165, 233, 0.15); }
 }
 
+/* --- Pricing hero --- */
+.pricing-hero {
+  background: linear-gradient(160deg, #ECFDF5 0%, #D1FAE5 40%, var(--color-bg) 100%);
+}
+
 /* --- Plans grid --- */
 .plans {
   display: grid;

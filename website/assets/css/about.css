@@ -139,6 +139,7 @@ body {
 .about-hero {
   padding-top: 40px;
   animation: aboutFadeInUp 0.7s ease-out both;
+  background: linear-gradient(160deg, #ECFEFF 0%, #CFFAFE 40%, var(--color-bg) 100%);
 }
 
 /* --- Story (two columns) --- */

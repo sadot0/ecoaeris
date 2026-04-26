@@ -178,6 +178,16 @@ button {
   line-height: 1.7;
 }
 
+.section__header h2::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 999px;
+}
+
 /* --- Скрытие для скринридеров --- */
 .sr-only {
   position: absolute;

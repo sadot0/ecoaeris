@@ -4,46 +4,80 @@
  *
  * Уникальная логика: мульти-шаговый wizard (4 шага) с сохранением
  * ответов пользователя и рекомендацией очистителя на основе
- * матрицы правил.
+ * взвешенного скоринга по 4 критериям.
  */
 
 (function () {
   'use strict';
 
   /* ============================================================
-     БЛОК 1. Каталог очистителей
-     Реальные модели с реальными ценами UZ (декабрь 2025)
+     БЛОК 1. Каталог очистителей — 8 моделей
+     Реальные модели с реальными ценами UZ
      ============================================================ */
   const PURIFIERS = [
     {
       id: 'xiaomi-3c', brand: 'Xiaomi', model: 'Mi Air Purifier 3C',
-      price: 1700000, coverage: 45, tags: ['budget', 'apartment', 'kids'],
+      price: 1700000, coverage: 45, cadr: 320,
+      filter: 'HEPA H13', quiet: true,
+      tags: ['budget', 'apartment', 'kids'],
       image: 'assets/images/purifiers/xiaomi-3c.svg',
-      pros: ['Бесшумный', 'Удалённое управление', 'Бюджетный'],
+      pros: ['Бесшумный ночной режим', 'Удалённое управление', 'Бюджетный'],
+    },
+    {
+      id: 'xiaomi-4lite', brand: 'Xiaomi', model: 'Mi Air Purifier 4 Lite',
+      price: 2100000, coverage: 43, cadr: 360,
+      filter: 'HEPA H13', quiet: false,
+      tags: ['budget', 'apartment'],
+      image: 'assets/images/purifiers/xiaomi-4lite.svg',
+      pros: ['HEPA H13 фильтр', 'Компактный', 'Приложение Mi Home'],
     },
     {
       id: 'xiaomi-4pro', brand: 'Xiaomi', model: 'Mi Smart Air Purifier 4 Pro',
-      price: 2990000, coverage: 60, tags: ['apartment', 'kids', 'allergy', 'mid'],
+      price: 2990000, coverage: 60, cadr: 500,
+      filter: 'HEPA H13+Carbon', quiet: false,
+      tags: ['apartment', 'kids', 'allergy', 'mid'],
       image: 'assets/images/purifiers/xiaomi-4pro.svg',
-      pros: ['HEPA H13 фильтр', 'OLED-дисплей', 'Приложение'],
+      pros: ['HEPA H13 + угольный фильтр', 'OLED-дисплей', 'CADR 500 м3/ч'],
+    },
+    {
+      id: 'samsung-ax60', brand: 'Samsung', model: 'AX60R5080WD',
+      price: 3500000, coverage: 60, cadr: 467,
+      filter: 'HEPA+Carbon', quiet: false,
+      tags: ['apartment', 'house', 'mid', 'smoke'],
+      image: 'assets/images/purifiers/samsung-ax60.svg',
+      pros: ['Угольный фильтр от дыма', '3-ступенчатая фильтрация', 'Wi-Fi управление'],
     },
     {
       id: 'philips-ac1715', brand: 'Philips', model: 'AC1715/10',
-      price: 5290000, coverage: 78, tags: ['apartment', 'house', 'allergy'],
+      price: 5290000, coverage: 78, cadr: 550,
+      filter: 'NanoProtect HEPA', quiet: false,
+      tags: ['apartment', 'house', 'allergy'],
       image: 'assets/images/purifiers/philips-ac1715.svg',
-      pros: ['HEPA NanoProtect', 'Режим сна', 'Датчик PM2.5'],
+      pros: ['NanoProtect HEPA', 'Режим сна', 'Датчик PM2.5'],
+    },
+    {
+      id: 'philips-ac2887', brand: 'Philips', model: 'AC2887/10',
+      price: 6890000, coverage: 79, cadr: 600,
+      filter: 'NanoProtect HEPA', quiet: false,
+      tags: ['house', 'office', 'allergy', 'high'],
+      image: 'assets/images/purifiers/philips-ac2887.svg',
+      pros: ['CADR 600 м3/ч', 'AeraSense датчик', 'Для больших помещений'],
     },
     {
       id: 'dyson-tp10', brand: 'Dyson', model: 'Purifier Cool TP10',
-      price: 7690000, coverage: 80, tags: ['apartment', 'house', 'premium', 'high', 'allergy'],
+      price: 7690000, coverage: 80, cadr: 350,
+      filter: 'HEPA H13', quiet: false,
+      tags: ['apartment', 'house', 'premium', 'high', 'allergy'],
       image: 'assets/images/purifiers/dyson-tp10.svg',
-      pros: ['360° фильтрация', 'Встроенный вентилятор', 'Премиум-дизайн'],
+      pros: ['360 фильтрация', 'Встроенный вентилятор', 'Премиум-дизайн'],
     },
     {
-      id: 'industrial-pro', brand: 'IQAir', model: 'HealthPro 250',
-      price: 21000000, coverage: 200, tags: ['office', 'industrial', 'high'],
+      id: 'iqair-hp250', brand: 'IQAir', model: 'HealthPro 250',
+      price: 21000000, coverage: 200, cadr: 780,
+      filter: 'HyperHEPA H14', quiet: false,
+      tags: ['office', 'industrial', 'high'],
       image: 'assets/images/purifiers/iqair.svg',
-      pros: ['Для площадей до 200м²', 'Медицинский HEPA', 'Промышленное применение'],
+      pros: ['Площадь до 200 м2', 'Медицинский HyperHEPA H14', 'Промышленное применение'],
     },
   ];
 
@@ -55,7 +89,7 @@
     totalSteps: 4,
     answers: {
       placement: null,  // apartment | house | office | industrial
-      area: 60,         // м²
+      area: 60,         // м2
       needs: null,      // allergy | kids | smoke | none
       budget: null,     // low | mid | high | rent
     },
@@ -77,7 +111,7 @@
       label.textContent = `Шаг ${num} из 4`;
     } else {
       bar.style.width = '100%';
-      label.textContent = 'Готово ✓';
+      label.textContent = 'Готово';
     }
   }
 
@@ -97,46 +131,151 @@
   }
 
   /* ============================================================
-     БЛОК 4. Алгоритм рекомендации
-     Фильтруем каталог по ответам, сортируем по релевантности
+     БЛОК 4. Алгоритм рекомендации — взвешенный скоринг
+     Все кандидаты оцениваются, ни один не отсеивается.
+     totalScore = coverage*35 + budget*25 + needs*25 + type*15
      ============================================================ */
+
+  /**
+   * coverageScore: насколько площадь покрытия соответствует площади помещения.
+   * Идеальный диапазон — coverage/area от 1.0 до 1.5x (100 баллов).
+   * Ниже 1.0 или выше 1.5 — плавное снижение.
+   */
+  function scoreCoverage(purifier, area) {
+    if (area <= 0) return 50;
+    const ratio = purifier.coverage / area;
+
+    if (ratio >= 1.0 && ratio <= 1.5) {
+      return 100;
+    } else if (ratio < 1.0) {
+      // Недостаточно покрытия: чем меньше ratio, тем хуже
+      // При ratio=0.5 -> 50, при ratio=0 -> 0
+      return Math.max(0, ratio * 100);
+    } else {
+      // Слишком большой запас: ratio > 1.5
+      // При ratio=2.0 -> 75, ratio=3.0 -> 50, ratio=5.0 -> 0
+      return Math.max(0, 100 - (ratio - 1.5) * 28.5);
+    }
+  }
+
+  /**
+   * budgetScore: соответствие бюджету пользователя.
+   * 100 если цена укладывается, 60 если немного выше, 20 если сильно выше.
+   * rent = аренда, бюджет не ограничен (все получают 100).
+   */
+  function scoreBudget(purifier, budget) {
+    const budgetLimits = { low: 3000000, mid: 6000000, high: 15000000 };
+
+    if (budget === 'rent') return 100;
+
+    const limit = budgetLimits[budget];
+    if (!limit) return 50;
+
+    if (purifier.price <= limit) {
+      return 100;
+    } else if (purifier.price <= limit * 1.3) {
+      // Немного выше бюджета (до 30% сверху)
+      return 60;
+    } else if (purifier.price <= limit * 2.0) {
+      // Заметно выше (до 2x)
+      return 20;
+    } else {
+      // Сильно выше бюджета
+      return 5;
+    }
+  }
+
+  /**
+   * needsScore: соответствие особым потребностям.
+   * allergy -> +50 за HEPA H13 и выше
+   * kids -> +50 за тихие модели / модели с тегом kids
+   * smoke -> +50 за угольный фильтр (Carbon)
+   * none -> базовые 50 баллов всем
+   */
+  function scoreNeeds(purifier, needs) {
+    let score = 50; // базовый балл
+
+    if (!needs || needs === 'none') return score;
+
+    if (needs === 'allergy') {
+      const f = purifier.filter.toLowerCase();
+      if (f.includes('hepa h13') || f.includes('hepa h14') || f.includes('nanoprotect')) {
+        score += 50;
+      }
+    }
+
+    if (needs === 'kids') {
+      if (purifier.quiet || purifier.tags.includes('kids')) {
+        score += 50;
+      }
+    }
+
+    if (needs === 'smoke') {
+      const f = purifier.filter.toLowerCase();
+      if (f.includes('carbon') || purifier.tags.includes('smoke')) {
+        score += 50;
+      }
+    }
+
+    return score;
+  }
+
+  /**
+   * typeScore: соответствие типу помещения.
+   * industrial -> крупные модели (coverage >= 100) получают высший балл
+   * apartment -> компактные модели (coverage <= 80) получают высший балл
+   * house -> средние и крупные
+   * office -> средние и крупные
+   */
+  function scoreType(purifier, placement) {
+    const cov = purifier.coverage;
+    const hasTag = purifier.tags.includes(placement);
+
+    // Прямое совпадение тега — сильный бонус
+    let score = hasTag ? 70 : 20;
+
+    if (placement === 'industrial') {
+      if (cov >= 150) score = 100;
+      else if (cov >= 80) score = 40;
+      else score = 10;
+    } else if (placement === 'apartment') {
+      if (cov <= 80) score = Math.max(score, 90);
+      else score = Math.min(score, 30);
+    } else if (placement === 'house') {
+      if (cov >= 50 && cov <= 120) score = Math.max(score, 85);
+      else if (cov > 120) score = Math.max(score, 40);
+    } else if (placement === 'office') {
+      if (cov >= 60) score = Math.max(score, 85);
+    }
+
+    return Math.min(100, score);
+  }
+
+  /**
+   * Главная функция расчёта — все модели получают totalScore,
+   * ни одна не отсеивается. Сортировка по итоговому баллу.
+   */
   function calculate() {
     const { placement, area, needs, budget } = state.answers;
 
-    // 1. Фильтр по типу помещения
-    let candidates = PURIFIERS.filter((p) =>
-      p.tags.includes(placement) || (placement === 'industrial' && p.coverage >= 150)
-    );
+    const scored = PURIFIERS.map((p) => {
+      const cScore = scoreCoverage(p, area);
+      const bScore = scoreBudget(p, budget);
+      const nScore = scoreNeeds(p, needs);
+      const tScore = scoreType(p, placement);
 
-    // 2. Фильтр по площади — coverage должен быть >= area
-    candidates = candidates.filter((p) => p.coverage >= area * 0.8);
+      const totalScore = cScore * 0.35 + bScore * 0.25 + nScore * 0.25 + tScore * 0.15;
+      const matchPercent = Math.round(totalScore);
 
-    // 3. Фильтр по бюджету
-    const budgetMap = { low: 3000000, mid: 6000000, high: Infinity };
-    if (budget !== 'rent' && budgetMap[budget]) {
-      candidates = candidates.filter((p) => p.price <= budgetMap[budget]);
-    }
-
-    // 4. Скоринг: +1 за каждое совпадение tag с needs
-    candidates.forEach((p) => {
-      p._score = 0;
-      if (needs && needs !== 'none' && p.tags.includes(needs)) p._score += 10;
-      // Бонус за соответствие покрытия (не сильно больше и не меньше)
-      const diff = Math.abs(p.coverage - area);
-      p._score += Math.max(0, 20 - diff / 5);
+      return { ...p, _score: totalScore, _match: matchPercent };
     });
 
-    // 5. Сортируем по скору
-    candidates.sort((a, b) => b._score - a._score);
-
-    // Fallback если нет вариантов — даём самый бюджетный
-    if (candidates.length === 0) {
-      candidates = [PURIFIERS[0]];
-    }
+    // Сортируем по убыванию скора
+    scored.sort((a, b) => b._score - a._score);
 
     return {
-      primary: candidates[0],
-      alternatives: candidates.slice(1, 3),
+      primary: scored[0],
+      alternatives: scored.slice(1, 4),
     };
   }
 
@@ -146,9 +285,17 @@
   function calculateAndRender() {
     const { primary, alternatives } = calculate();
 
+    const placementLabels = {
+      apartment: 'квартиры',
+      house: 'дома',
+      office: 'офиса',
+      industrial: 'промышленного помещения',
+    };
+    const placementLabel = placementLabels[state.answers.placement] || 'помещения';
+
     document.getElementById('result-title').textContent = `${primary.brand} ${primary.model}`;
     document.getElementById('result-subtitle').textContent =
-      `Лучший выбор для ${state.answers.placement === 'apartment' ? 'квартиры' : 'помещения'} ${state.answers.area} м²`;
+      `Лучший выбор для ${placementLabel} ${state.answers.area} м2`;
 
     const container = document.getElementById('result-main');
     container.innerHTML = `
@@ -157,12 +304,15 @@
           <img src="${primary.image}" alt="${primary.model}" class="recommendation__img"
                onerror="this.src='assets/images/purifiers/placeholder.svg'">
           <div class="recommendation__body">
+            <div class="recommendation__match">Совпадение: ${primary._match}%</div>
             <div class="recommendation__price">${formatPrice(primary.price)} сум</div>
             <ul class="recommendation__pros">
-              ${primary.pros.map((p) => `<li>✓ ${p}</li>`).join('')}
+              ${primary.pros.map((p) => `<li>${p}</li>`).join('')}
             </ul>
             <div class="recommendation__coverage">
-              <b>Площадь покрытия:</b> ${primary.coverage} м²
+              <b>Площадь покрытия:</b> ${primary.coverage} м2 &nbsp;|&nbsp;
+              <b>CADR:</b> ${primary.cadr} м3/ч &nbsp;|&nbsp;
+              <b>Фильтр:</b> ${primary.filter}
             </div>
           </div>
         </div>
@@ -173,9 +323,12 @@
         <div class="alternatives">
           ${alternatives.map((a) => `
             <article class="card alt">
+              <img src="${a.image}" alt="${a.model}" class="alt__img"
+                   onerror="this.src='assets/images/purifiers/placeholder.svg'">
               <h4>${a.brand} ${a.model}</h4>
+              <div class="alt__match">Совпадение: ${a._match}%</div>
               <div class="alt__price">${formatPrice(a.price)} сум</div>
-              <small>Покрытие: ${a.coverage} м²</small>
+              <small>Покрытие: ${a.coverage} м2 &nbsp;|&nbsp; CADR: ${a.cadr} м3/ч</small>
             </article>
           `).join('')}
         </div>

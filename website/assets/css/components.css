@@ -79,6 +79,7 @@
 .card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-md);
+  border-left: 3px solid var(--color-primary);
 }
 
 /* --- AQI-бейдж: цвет зависит от значения --- */

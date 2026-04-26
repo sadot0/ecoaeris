@@ -65,6 +65,8 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  flex-wrap: wrap;
+  overflow-x: hidden;
 }
 
 .nav__link {
@@ -226,4 +228,25 @@
     grid-template-columns: 1fr;
     gap: 24px;
   }
+}
+
+/* --- Floating Telegram button --- */
+.tg-float {
+  position: fixed; bottom: 28px; left: 28px;
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, #229ED9, #1a8fc4);
+  color: white; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(34, 158, 217, 0.4);
+  z-index: 80;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tg-float:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 28px rgba(34, 158, 217, 0.5);
+  color: white;
+}
+@media (max-width: 480px) {
+  .tg-float { width: 48px; height: 48px; bottom: 20px; left: 16px; font-size: 1.25rem; }
 }

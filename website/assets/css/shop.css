@@ -5,7 +5,7 @@
 
 .shop-hero {
   padding: 80px 0 40px;
-  background: linear-gradient(180deg, #F0F9FF 0%, var(--color-bg) 100%);
+  background: linear-gradient(160deg, #EEF2FF 0%, #E0E7FF 40%, var(--color-bg) 100%);
 }
 
 .shop-layout {
@@ -251,6 +251,12 @@
 }
 
 /* Add-to-cart button hover pulse */
+.product-card__bottom .btn {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
 .product-card__bottom .btn:active {
   transform: scale(0.95);
 }
@@ -484,6 +490,8 @@
   justify-content: center;
   border: 2px solid var(--color-white);
   animation: badgePop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @keyframes badgePop {
