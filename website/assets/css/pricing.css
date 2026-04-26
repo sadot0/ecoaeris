@@ -31,7 +31,8 @@
 
 /* --- Pricing hero --- */
 .pricing-hero {
-  background: linear-gradient(160deg, #ECFDF5 0%, #D1FAE5 40%, var(--color-bg) 100%);
+  padding: 80px 0 40px;
+  background: linear-gradient(150deg, #ECFDF5 0%, #D1FAE5 50%, #FAFBFC 100%);
 }
 
 /* --- Plans grid --- */

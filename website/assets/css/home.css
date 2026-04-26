@@ -74,10 +74,10 @@
   display: flex;
   align-items: center;
   background:
-    linear-gradient(160deg,
-      #E0F2FE 0%,
-      #DBEAFE 25%,
-      #D1FAE5 55%,
+    linear-gradient(150deg,
+      #EFF6FF 0%,
+      #DBEAFE 30%,
+      #D1FAE5 70%,
       #ECFDF5 100%);
   position: relative;
   overflow: hidden;
@@ -274,7 +274,7 @@
 
 .map-wrap {
   width: 100%;
-  height: 600px;
+  height: 620px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -300,8 +300,8 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
   justify-items: center;
 }
 
@@ -355,7 +355,8 @@
 
 .step {
   position: relative;
-  padding: 16px 0;
+  padding: 32px 24px;
+  text-align: center;
   animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -376,7 +377,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   position: relative;
   z-index: 1;
   box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2);

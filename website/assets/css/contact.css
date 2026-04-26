@@ -5,7 +5,8 @@
 
 /* --- Contact hero --- */
 .contact-hero {
-  background: linear-gradient(160deg, #FFF1F2 0%, #FFE4E6 40%, var(--color-bg) 100%);
+  padding: 80px 0 40px;
+  background: linear-gradient(150deg, #FFF1F2 0%, #FFE4E6 50%, #FAFBFC 100%);
 }
 
 /* --- Hero: быстрые контакты --- */

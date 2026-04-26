@@ -12,7 +12,7 @@
   --color-secondary: #10B981;      /* Изумрудный — эко, clean */
   --color-secondary-dark: #059669;
   --color-accent: #14B8A6;         /* Бирюзовый */
-  --color-warm: #FEF7ED;           /* Тёплый кремовый — фон секций */
+  --color-warm: #FEFCE8;           /* Тёплый кремовый — фон секций */
   --color-danger: #EF4444;
 
   /* Нейтральные */
@@ -20,7 +20,7 @@
   --color-text: #1E293B;           /* Основной текст */
   --color-muted: #64748B;          /* Серый второстепенный */
   --color-border: #E2E8F0;         /* Границы */
-  --color-bg: #F8FAFC;             /* Фон страницы */
+  --color-bg: #FAFBFC;             /* Фон страницы */
   --color-bg-alt: #F1F5F9;         /* Альтернативный фон */
   --color-white: #FFFFFF;
 
@@ -178,15 +178,7 @@ button {
   line-height: 1.7;
 }
 
-.section__header h2::after {
-  content: '';
-  display: block;
-  width: 64px;
-  height: 3px;
-  margin: 12px auto 0;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  border-radius: 999px;
-}
+/* gradient underline removed for cleaner look */
 
 /* --- Скрытие для скринридеров --- */
 .sr-only {

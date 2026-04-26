@@ -2,25 +2,24 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoAeris — Калькулятор подбора очистителя</title>
-
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/calculator.css">
 </head>
 <body>
-
-  <!-- Одинаковый HEADER (копия) -->
   <header class="site-header">
     <div class="container site-header__inner">
-      <a href="index.html" class="logo"><img src="assets/images/logo.svg" alt="EcoAeris" class="logo__icon" width="36" height="36"><span>EcoAeris</span></a>
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.svg" alt="EcoAeris" class="logo__icon" width="36" height="36">
+        <span>EcoAeris</span>
+      </a>
       <button class="nav-toggle" aria-label="Меню">☰</button>
       <nav class="nav">
         <a href="index.html" class="nav__link">Главная</a>
@@ -42,16 +41,12 @@
           <p class="section__subtitle">Ответьте на 4 вопроса — получите персональную рекомендацию</p>
         </header>
 
-        <!-- Progress bar (заполняется через JS) -->
         <div class="progress">
           <div class="progress__bar" id="progress-bar" style="width: 25%"></div>
           <span class="progress__label" id="progress-label">Шаг 1 из 4</span>
         </div>
 
-        <!-- ============ WIZARD ============ -->
         <article class="wizard" id="wizard">
-
-          <!-- ШАГ 1 -->
           <section class="wizard__step active" data-step="1">
             <h2>Где будет работать очиститель?</h2>
             <div class="options">
@@ -74,7 +69,6 @@
             </div>
           </section>
 
-          <!-- ШАГ 2 -->
           <section class="wizard__step" data-step="2">
             <h2>Какая площадь помещения?</h2>
             <div class="slider-wrap">
@@ -87,7 +81,6 @@
             </div>
           </section>
 
-          <!-- ШАГ 3 -->
           <section class="wizard__step" data-step="3">
             <h2>Есть особые требования?</h2>
             <div class="options">
@@ -110,7 +103,6 @@
             </div>
           </section>
 
-          <!-- ШАГ 4 -->
           <section class="wizard__step" data-step="4">
             <h2>Какой бюджет?</h2>
             <div class="options">
@@ -133,7 +125,6 @@
             </div>
           </section>
 
-          <!-- РЕЗУЛЬТАТ -->
           <section class="wizard__step wizard__result" data-step="5">
             <div class="result-hero">
               <span class="result-hero__kicker">Ваша рекомендация</span>
@@ -153,7 +144,6 @@
     </section>
   </main>
 
-  <!-- Одинаковый FOOTER (копия — ссылка на бот обязательна!) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer__grid">
@@ -162,9 +152,21 @@
           <p>Мониторинг воздуха и очистители для Узбекистана.</p>
           <a href="https://t.me/ecoaerisbot?start=website" target="_blank" rel="noopener" class="footer__tg-btn">📱 Открыть Telegram-бота</a>
         </div>
-        <div><h4 class="footer__title">Продукт</h4><p><a href="shop.html">Магазин</a></p><p><a href="calculator.html">Калькулятор</a></p><p><a href="pricing.html">Аренда</a></p></div>
-        <div><h4 class="footer__title">Компания</h4><p><a href="about.html">О нас</a></p><p><a href="contact.html">Контакты</a></p></div>
-        <div><h4 class="footer__title">Данные</h4><p>Источник: WAQI.info</p></div>
+        <div>
+          <h4 class="footer__title">Продукт</h4>
+          <p><a href="shop.html">Магазин</a></p>
+          <p><a href="calculator.html">Калькулятор</a></p>
+          <p><a href="pricing.html">Аренда</a></p>
+        </div>
+        <div>
+          <h4 class="footer__title">Компания</h4>
+          <p><a href="about.html">О нас</a></p>
+          <p><a href="contact.html">Контакты</a></p>
+        </div>
+        <div>
+          <h4 class="footer__title">Данные</h4>
+          <p>Источник: WAQI.info</p>
+        </div>
       </div>
       <div class="footer__bottom">© <span id="footer-year">2026</span> EcoAeris</div>
     </div>
@@ -172,6 +174,6 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/calculator.js"></script>
-<a href="https://t.me/ecoaerisbot?start=website" target="_blank" class="tg-float" aria-label="Telegram бот">💬</a>
+  <a href="https://t.me/ecoaerisbot?start=website" target="_blank" class="tg-float" aria-label="Telegram бот">💬</a>
 </body>
 </html>

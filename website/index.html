@@ -2,30 +2,24 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoAeris — Качество воздуха Узбекистана в реальном времени</title>
   <meta name="description" content="Мониторинг AQI по городам Узбекистана и подбор очистителей воздуха">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- Общие стили (единый дизайн команды) -->
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
-
-  <!-- Стили именно этой страницы -->
   <link rel="stylesheet" href="assets/css/home.css">
 
-  <!-- Telegram Web App SDK (для интеграции с ботом) -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
 
-  <!-- ============== HEADER (одинаковый у всей команды!) ============== -->
   <header class="site-header">
     <div class="container site-header__inner">
       <a href="index.html" class="logo">
@@ -45,11 +39,7 @@
   </header>
 
   <main>
-    <!-- ============== HERO ============== -->
-    <!--
-      Hero-секция. Семантический <section>, слева заголовок и CTA,
-      справа живой виджет AQI Ташкента. Используем CSS Grid.
-    -->
+
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__content">
@@ -64,8 +54,6 @@
             <a href="#map" class="btn btn--secondary btn--large">Открыть карту</a>
           </div>
         </div>
-
-        <!-- Live-виджет AQI Ташкента (данные подгружаются через JS) -->
         <aside class="aqi-widget" id="hero-aqi-widget">
           <div class="aqi-widget__skeleton">
             <div class="skeleton-circle"></div>
@@ -75,7 +63,6 @@
       </div>
     </section>
 
-    <!-- ============== MAP ============== -->
     <section class="section" id="map">
       <div class="container">
         <header class="section__header">
@@ -85,8 +72,6 @@
             Данные обновляются каждые 10 минут из 500+ мировых станций мониторинга
           </p>
         </header>
-
-        <!-- Карта качества воздуха — Plume Labs (реальная тепловая карта) -->
         <div class="map-wrap">
           <iframe
             src="https://air.plumelabs.com/en/"
@@ -100,7 +85,6 @@
       </div>
     </section>
 
-    <!-- ============== WHY IT MATTERS ============== -->
     <section class="section section--warm">
       <div class="container">
         <header class="section__header">
@@ -131,7 +115,6 @@
       </div>
     </section>
 
-    <!-- ============== HOW IT WORKS ============== -->
     <section class="section">
       <div class="container">
         <header class="section__header">
@@ -156,9 +139,9 @@
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- ============== FOOTER (одинаковый у всей команды!) ============== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer__grid">
@@ -166,7 +149,7 @@
           <h3 class="footer__title">EcoAeris</h3>
           <p>Мониторинг воздуха и очистители для Узбекистана.</p>
           <a href="https://t.me/ecoaerisbot?start=website" target="_blank" rel="noopener" class="footer__tg-btn">
-            📱 Открыть Telegram-бота
+            Открыть Telegram-бота
           </a>
         </div>
         <div>
@@ -187,15 +170,16 @@
         </div>
       </div>
       <div class="footer__bottom">
-        © <span id="footer-year">2026</span> EcoAeris. Студенческий проект TEA3DBA2A.
+        &copy; <span id="footer-year">2026</span> EcoAeris. Студенческий проект TEA3DBA2A.
       </div>
     </div>
   </footer>
 
-  <!-- Общие JS -->
   <script src="assets/js/api.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/home.js"></script>
-<a href="https://t.me/ecoaerisbot?start=website" target="_blank" class="tg-float" aria-label="Telegram бот">💬</a>
+
+  <a href="https://t.me/ecoaerisbot?start=website" target="_blank" class="tg-float" aria-label="Telegram">💬</a>
+
 </body>
 </html>
